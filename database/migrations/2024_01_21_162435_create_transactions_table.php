@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('payment_method')->nullable();
             $table->integer('payment_status')->nullable();
             $table->integer('status')->default(1);
+            $table->string('machine_id')->nullable();
+            $table->integer('is_sync')->default(1);
             $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });

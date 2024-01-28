@@ -43,26 +43,22 @@
         </div> --}}
     </div>
     <div>
-        <div id="barchart" class="-ml-5"></div>
+        <div id="piechart1" class="-ml-5"></div>
     </div>
 </div>
 @push('js')
 <script>
     var options = {
         chart: {
-            type: 'bar',
-            height: 500
+            type: 'pie',
+            width: 500,
+            height: 350 // Adjust height as needed
         },
-        series: [{
-            name: 'Total Amount',
-            data: @json($series)
-        }],
-        xaxis: {
-            categories: @json($categories)
-        }
+        series: @json($series),
+        labels: @json($labels)
     };
 
-    var chart = new ApexCharts(document.querySelector("#barchart"), options);
+    var chart = new ApexCharts(document.querySelector("#piechart1"), options);
     chart.render();
-</script>    
+</script>
 @endpush

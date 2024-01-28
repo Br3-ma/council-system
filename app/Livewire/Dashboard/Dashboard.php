@@ -15,8 +15,10 @@ class Dashboard extends Component
     public $transactions, $transactions_today, $streams;
 
     // charts
-    public $labels = [];
-    public $series = [];
+    public $labels = []; //bar
+    public $labels1 = []; //pie
+    public $series = []; //bar
+    public $series1 = []; //pie
     public $categories = [];
 
 
@@ -99,8 +101,12 @@ class Dashboard extends Component
     }
     
     // work on the next
-    public function collections_by_districts(){
-
-        
+    public function collections_streams_pie(){
+        $transactions = Stream::with('transacts')->get();
+        foreach ($transactions as $data) {
+            $totalAmount = $data->transacts->sum('total_amount');
+            $this->series1[] = $totalAmount;
+            $this->labels1[] = $data->name;
+        }
     }
 }

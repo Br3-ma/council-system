@@ -3,13 +3,15 @@
 namespace App\Livewire\Dashboard;
 
 use App\Models\District;
+use App\Models\Province;
 use Livewire\Component;
 
 class Districts extends Component
 {
-    public $districts, $name, $province_id, $map;
+    public $districts, $provinces, $name, $province_id, $map;
     public function render()
     {
+        $this->provinces = Province::orderBy('id', 'asc')->get();
         $this->districts = District::with('transacts')->orderBy('name', 'asc')->get();
         return view('livewire.dashboard.districts')->layout('layouts.app');
     }

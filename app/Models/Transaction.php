@@ -15,6 +15,7 @@ class Transaction extends Model
         'customer_id',
         'employee_id',
         'terminal_id',
+        'machine_id',
         'district_id',
         'transaction_date',
         'category',
@@ -25,6 +26,7 @@ class Transaction extends Model
         'net_amount',
         'payment_method',
         'payment_status',
+        'is_sync',
     ];
 
     protected static function boot()

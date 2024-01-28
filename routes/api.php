@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\DataController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('v1/new-transaction', [TransactionController::class, 'store']);
+Route::post('v1/available-revenue-streams', [DataController::class, 'get_streams']);
+Route::post('v1/available-locations', [DataController::class, 'get_locations']);

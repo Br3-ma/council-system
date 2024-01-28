@@ -28,9 +28,11 @@
                     <div class="relative z-20 bg-transparent dark:bg-form-input">
                         <select wire:model="province_id" class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                             <option value="">--select--</option>
-                            <option value="1">Lusaka</option>
-                            <option value="2">Copperbelt</option>
-                            <option value="3">Eastern</option>
+
+                            @forelse ($provinces as $p)
+                            <option value="{{$p->id}}">{{$p->name}}</option>
+                            @empty
+                            @endforelse
                         </select>
                         <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">
                             <svg class="fill-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
