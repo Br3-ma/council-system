@@ -14,11 +14,16 @@ class District extends Model
         'name',
         'created_by',
         'comments',
+        'map',
         'status',
         'is_deleted'
     ];
 
     public function user(){
         $this->belongsTo(User::class);
+    }
+
+    public function transacts(){
+        return $this->hasMany(Transaction::class, 'district_id');
     }
 }

@@ -7,12 +7,12 @@
         </div>
 
         <div class="mt-4 flex items-end justify-between">
-            <div>
+            <a href="#transactions" onclick="openModal('transactionList')">
                 <h4 class="text-title-lg font-bold text-primary dark:text-white">
                   <span class="text-md">K</span>{{ $total_net_collected }}
                 </h4>
                 <span class="text-sm font-medium">Total Net Collections</span>
-            </div>
+            </a>
 
             {{-- <span class="flex items-center gap-1 text-sm font-medium text-meta-3">
                 0.43%
@@ -40,14 +40,12 @@
       </div>
 
       <div class="mt-4 flex items-end justify-between">
-        <div>
-          <h4
-            class="text-title-lg font-bold text-primary dark:text-white"
-          >
-            <span class="text-md">K</span>{{ $total_gross_collected }}
+        <a href="#transactions" onclick="openModal('transactionList')">
+          <h4 class="text-title-lg font-bold text-primary dark:text-white" >
+            K{{ $total_gross_collected }}
           </h4>
           <span class="text-sm font-medium">Total Gross Collections</span>
-        </div>
+        </a>
 
         {{-- <span
           class="flex items-center gap-1 text-sm font-medium text-meta-3"
@@ -75,9 +73,7 @@
     <div
       class="rounded-sm border border-stroke bg-white py-6 px-7.5 shadow-default dark:border-strokedark dark:bg-boxdark"
     >
-      <div
-        class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4"
-      >
+      <div class="flex h-11.5 w-11.5 items-center justify-center rounded-full bg-meta-2 dark:bg-meta-4">
         <svg
           class="fill-primary dark:fill-white"
           width="22"
@@ -98,14 +94,12 @@
       </div>
 
       <div class="mt-4 flex items-end justify-between">
-        <div>
-          <h4
-            class="text-title-md font-bold text-black dark:text-white"
-          >
+        <a href="#revenue-streams" onclick="openModal('revenueStreams')">
+          <h4 class="text-title-md font-bold text-success dark:text-white">
             {{ $num_of_streams }}
           </h4>
           <span class="text-sm font-medium">Total Revenue Streams</span>
-        </div>
+        </a>
       </div>
     </div>
     <!-- Card Item End -->
@@ -122,14 +116,12 @@
       </div>
 
       <div class="mt-4 flex items-end justify-between">
-        <div>
-          <h4
-            class="text-title-md font-bold text-black dark:text-white"
-          >
+        <a href="#collection-streams" onclick="openModal('todayCollections')">
+          <h4 class="text-title-md font-bold text-warning dark:text-white">
             K{{ $total_today }}
           </h4>
           <span class="text-sm font-medium">Total Collections Today</span>
-        </div>
+        </a>
         
       </div>
     </div>

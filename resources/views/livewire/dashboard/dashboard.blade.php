@@ -10,30 +10,10 @@
             {{-- @include('livewire.partials.dashboard.recent-transactions') --}}
         </div>
     </div>
+
+    @include('livewire.partials.dashboard.transaction-list')
+    @include('livewire.partials.dashboard.revenue-streams')
+    @include('livewire.partials.dashboard.today-collections')
 </main>
 
-
-<script>
-  // -- Total Collection | Dashboard Bar Chart
-  var options = @json($chart1Options);
-
-  var chart = new ApexCharts(document.querySelector("#chart"), options);
-  chart.render();
-
-
-  
-  // -- Collections by Districts | Dashboard Pie Chart 
-  var options1 = {
-      chart: {
-          type: 'pie',
-          width: 500,
-          height: 500
-      },
-      series: [91, 125],
-      labels: ['Markets', 'Toilets']
-  };
-
-  var chart1 = new ApexCharts(document.querySelector("#collection_pie"), options1);
-  chart1.render();
-</script>
 

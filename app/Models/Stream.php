@@ -17,6 +17,10 @@ class Stream extends Model
     ];
 
     public function user(){
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
+    }
+
+    public function transacts(){
+        return $this->hasMany(Transaction::class, 'stream_id');
     }
 }

@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div class="flex w-full flex-wrap gap-3 sm:gap-5">
             <h4 class="text-xl font-bold text-black dark:text-white">
-                Total Collections
+                Daily Collections
             </h4>
             {{-- <div class="flex min-w-47.5">
                 <span class="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
@@ -25,7 +25,7 @@
                 </div>
             </div> --}}
         </div>
-        <div class="flex w-full max-w-45 justify-end">
+        {{-- <div class="flex w-full max-w-45 justify-end">
             <div class="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
                 <button class="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
                     Day
@@ -40,9 +40,29 @@
                     Year   
                 </button>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div>
-        <div id="chart" class="-ml-5"></div>
+        <div id="barchart" class="-ml-5"></div>
     </div>
 </div>
+@push('js')
+<script>
+    var options = {
+        chart: {
+            type: 'bar',
+            height: 500
+        },
+        series: [{
+            name: 'Total Amount',
+            data: @json($series)
+        }],
+        xaxis: {
+            categories: @json($categories)
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#barchart"), options);
+    chart.render();
+</script>    
+@endpush

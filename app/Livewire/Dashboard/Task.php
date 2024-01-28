@@ -8,6 +8,6 @@ class Task extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.task');
+        return view('livewire.dashboard.task')->layout('layouts.app');
     }
 }

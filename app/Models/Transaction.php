@@ -27,6 +27,31 @@ class Transaction extends Model
         'payment_status',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+    
+        // Include stream and district relationships when the model is called
+        static::retrieved(function ($transaction) {
+            $transaction->load('stream', 'district', 'receipt');
+        });
+    }
+    
+    
+
+    public function stream()
+    {
+        return $this->belongsTo(Stream::class, 'stream_id');
+    }
+    public function district()
+    {
+        return $this->belongsTo(District::class, 'stream_id');
+    }
+    public function receipt()
+    {
+        return $this->hasOne(Reciept::class, 'transaction_id');
+    }
+
     // Define relationships with other models
     // public function customer()
     // {
@@ -43,8 +68,4 @@ class Transaction extends Model
     //     return $this->belongsTo(POSTerminal::class, 'terminal_id');
     // }
 
-    // public function receipt()
-    // {
-    //     return $this->hasOne(Receipt::class);
-    // }
 }

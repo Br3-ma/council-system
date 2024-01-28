@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reciept extends Model
 {
     use HasFactory;
-    protected $table = 'receipts'; // Assuming your table is named 'receipts'
+    // protected $table = 'receipts'; // Assuming your table is named 'receipts'
 
     protected $fillable = [
         'transaction_id',
@@ -29,7 +29,7 @@ class Reciept extends Model
     // Define relationships with other models
     public function transaction()
     {
-        return $this->belongsTo(Transaction::class, 'transaction_id');
+        return $this->belongsTo(Transaction::class);
     }
 
     // public function customer()

@@ -12,13 +12,12 @@ class Dashboard extends Component
 
     public $total_today, $total_net_collected, $total_gross_collected;
     public $num_of_streams, $num_of_transaction_today;
+    public $transactions, $transactions_today, $streams;
 
-
-    // Collections by Streams - chart
-    public $chart1Options = [];
-    public $chart1Data = []; 
-    public $chart1Categories = []; 
-    public $chart1_options;
+    // charts
+    public $labels = [];
+    public $series = [];
+    public $categories = [];
 
 
 
@@ -38,6 +37,12 @@ class Dashboard extends Component
         $this->num_of_streams = $this->num_revenue_streams();
         $this->total_net_collected = $this->net_collected();
         $this->total_gross_collected = $this->gross_collected();
+        
+        // Modals
+        $this->transactions = Transaction::orderBy('created_at', 'desc')->get();
+        $today = Carbon::today();
+        $this->transactions_today = Transaction::whereDate('created_at', $today)->orderBy('created_at', 'desc')->get();
+        $this->streams = Stream::with('transacts')->orderBy('name', 'asc')->get();
     }
 
 
@@ -77,63 +82,25 @@ class Dashboard extends Component
 
     // Chart Traits
     public function collections_by_streams(){
-        $this->loadChart1Data();
-        $this->getTransactionDates();
     
-        $this->chart1Options = [
-            'chart' => [
-                'type' => 'bar',
-            ],
-            'series' => $this->chart1Data,
-            'xaxis' => [
-                'type' => 'datetime',
-                'categories' => $this->chart1Categories,
-            ],
-        ];
-    }
-
-    public function loadChart1Data()
-    {
-        $revenueStreams = Stream::all();
-
-        foreach ($revenueStreams as $stream) {
-            $data = Transaction::where('stream_id', $stream->id)
-                ->orderBy('created_at')
-                ->pluck('total_amount')
-                ->toArray();
-
-            $this->chart1Data[] = [
-                'name' => $stream->name,
-                'data' => $data,
-            ];
-        }
-    }
-
-    public function getTransactionDates()
-    {
-        $this->chart1Categories = Transaction::distinct()
-            ->orderBy('created_at')
-            ->pluck('created_at')
-            ->map(function ($date) {
-                return Carbon::parse($date)->format('Y-m-d\TH:i:s\Z');
-            })
-            ->toArray();
+        // Fetch transactions within the date range and group by created_at date
+        $groupedTransactions = Transaction::orderBy('created_at')
+            ->get()
+            ->groupBy(function ($transaction) {
+                return $transaction->created_at->format('F j, Y'); // Format as "Month day, Year"
+            });
+    
+        // Extract series and categories arrays
+        $this->series = $groupedTransactions->map(function ($group) {
+            return $group->sum('total_amount');
+        })->values()->toArray();
+    
+        $this->categories = $groupedTransactions->keys()->toArray();
     }
     
     // work on the next
     public function collections_by_districts(){
-        $this->loadChart1Data();
-        $this->getTransactionDates();
-    
-        $this->chart1Options = [
-            'chart' => [
-                'type' => 'bar',
-            ],
-            'series' => $this->chart1Data,
-            'xaxis' => [
-                'type' => 'datetime',
-                'categories' => $this->chart1Categories,
-            ],
-        ];
+
+        
     }
 }

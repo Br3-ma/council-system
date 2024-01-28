@@ -8,6 +8,6 @@ class Calendar extends Component
 {
     public function render()
     {
-        return view('livewire.dashboard.calendar');
+        return view('livewire.dashboard.calendar')->layout('layouts.app');
     }
 }

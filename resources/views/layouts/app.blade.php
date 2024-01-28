@@ -1,49 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
   
-<!-- Mirrored from demo.tailadmin.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jan 2024 13:47:20 GMT -->
+<!-- Mirrored from demo.tailadmin.com/task-kanban by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jan 2024 13:48:21 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-    Council | Dashboard
+      Dashboard | Council Revenue System
     </title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <link rel="icon" href="favicon.ico"><link href="{{ asset('css/style.css')}}" rel="stylesheet">
-    {{-- <script nonce="0787c0b5-21e8-4667-a4e2-f91a3c23dde1">
-        try { 
-            (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
-                console.error('Failed to run Cloudflare Zaraz: ', err)
-                fetch('/cdn-cgi/zaraz/t', {
-                    credentials: 'include',
-                    keepalive: true,
-                    method: 'GET',
-            })
-        };
-    </script> --}}
+    @livewireStyles
+  <link rel="icon" href="favicon.ico"><link href="{{ asset('css/style.css')}}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  {{-- <script nonce="15f83326-1390-4f9a-9d27-19183938fc6a">
+      try { (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
+        console.error('Failed to run Cloudflare Zaraz: ', err)
+        fetch('/cdn-cgi/zaraz/t', {
+          credentials: 'include',
+          keepalive: true,
+          method: 'GET',
+        })
+      };
     
+  </script> --}}
+  <style>
+    #reportSearchModal, #newDistrictModal, #newStreamModal, #transactionList, 
+    #todayCollections, #revenueStreams {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Set a high z-index to make the modal appear over everything */
+        overflow: auto;
+    }
+
+    .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 10000; /* Set a higher z-index for the modal content */
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        cursor: pointer;
+        z-index: 10001; /* Set a higher z-index for the close button to appear above the modal content */
+    }
+</style>
 </head>
 
 <body
-    x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
-    x-init="
-        darkMode = JSON.parse(localStorage.getItem('darkMode'));
-        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
-    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
-  >
+    x-data="{ page: 'kanban', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="darkMode = JSON.parse(localStorage.getItem('darkMode'));
+            $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
     <!-- ===== Preloader Start ===== -->
-    <div
-  x-show="loaded"
-  x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
-  class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black"
->
-  <div
-    class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"
-  ></div>
-</div>
+    <div x-show="loaded"
+      x-init="window.addEventListener('DOMContentLoaded', () => {setTimeout(() => loaded = false, 500)})"
+      class="fixed left-0 top-0 z-999999 flex h-screen w-screen items-center justify-center bg-white dark:bg-black">
+      <div class="h-16 w-16 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
+    </div>
 
     <!-- ===== Preloader End ===== -->
 
@@ -465,7 +494,7 @@
           >
             <li>
               <a
-                href="profile.html"
+                href="{{ route('profile.show') }}"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -511,7 +540,7 @@
             </li>
             <li>
               <a
-                href="settings.html"
+                href="#"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -538,12 +567,6 @@
 
         <form method="POST" action="{{ route('logout') }}" x-data>
             @csrf
-           {{--
-            <span href="{{ route('logout') }}">
-                {{ __('Log Out') }}
-            </span>
-            --}} 
-            
           <button
             type="submit"
             class="flex items-center gap-3.5 py-4 px-6 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
@@ -585,7 +608,38 @@
     </div>
     <!-- ===== Page Wrapper End ===== -->
   <script defer src="{{ asset('js/bundle.js')}}"></script><script defer src="../static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8487c4d2ae9e5fd6","version":"2024.1.0","r":1,"token":"67f7a278e3374824ae6dd92295d38f77","b":1}' crossorigin="anonymous"></script>
-  {{-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
-</body>
+  
 
+    <script>
+        function openModal(name) {
+            var modal = document.getElementById(name);
+
+            if (modal) {
+                modal.style.display = "flex";
+            } else {
+                console.error("Modal with name '" + name + "' not found.");
+            }
+        }
+        
+        function closeModal(name) {
+            var modal = document.getElementById(name);
+
+            if (modal) {
+                modal.style.display = "none";
+            } else {
+                console.error("Modal with name '" + name + "' not found.");
+            }
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementsByClassName("outer-closer")[0];
+
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+    @stack('js')
+</body>
 </html>

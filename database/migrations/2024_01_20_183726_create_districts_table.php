@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('created_by')->nullable();
             $table->string('name');
             $table->text('comments')->nullable();
+            $table->text('map')->nullable();
             $table->integer('status')->default(1);
             $table->integer('is_deleted')->default(0);
             $table->timestamps();

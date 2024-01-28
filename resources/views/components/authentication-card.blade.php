@@ -1,4 +1,9 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+<div style="
+        background-color: white;
+        width:100%;
+        padding:50%;
+        border-radius:5%;
+    ">
     <div>
         {{ $logo }}
     </div>
