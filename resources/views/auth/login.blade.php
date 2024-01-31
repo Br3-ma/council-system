@@ -58,7 +58,7 @@
                 <div class="hidden w-full xl:block xl:w-1/2">
                   <div class="py-17.5 px-26 text-center">
                     <a class="mb-5.5 inline-block" href="index.html">
-                      <img
+                      {{-- <img
                         class="hidden dark:block"
                         src="src/images/logo/logo.svg"
                         alt="Logo"
@@ -67,7 +67,7 @@
                         class="dark:hidden"
                         src="src/images/logo/logo-dark.svg"
                         alt="Logo"
-                      />
+                      /> --}}
                     </a>
 
                     <p class="font-medium 2xl:px-20">
@@ -75,7 +75,7 @@
                     </p>
 
                     <span class="mt-15 inline-block">
-                      <img src="src/images/illustration/illustration-03.svg"
+                      <img src="https://media.istockphoto.com/id/945363034/vector/city-leaf-icon.jpg?s=612x612&w=0&k=20&c=D8bf7CdfH1OKNDLIDzTFYOBexc2jurO-nCc_jSsTjMw="
                         alt="illustration" />
                     </span> 
                   </div>
