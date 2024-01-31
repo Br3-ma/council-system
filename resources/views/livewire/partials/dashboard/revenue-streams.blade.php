@@ -13,10 +13,10 @@
         
 
             <div class="flex flex-col gap-10">
-                <div class="rounded-sm bg-white pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+                <div class="rounded-sm bg-white pt-6 pb-2.5 dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
                     <div class="max-w-full overflow-x-auto">
                         @if (!empty($streams->toArray()))
-                            <table class="w-full table-auto">
+                            <table id="revenue_streams_dash" class="w-full table-auto">
                                 <thead>
                                     <tr class="bg-gray-2 text-left dark:bg-meta-4">
                                         <th class="font-bold fw-bold min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">

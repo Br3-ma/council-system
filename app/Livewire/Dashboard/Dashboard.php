@@ -27,6 +27,7 @@ class Dashboard extends Component
     {
         $this->get_stats();
         $this->collections_by_streams();
+        $this->collections_streams_pie();
         // dd($this->chart1Data);
         // dd($this->chart1Categories);
         return view('livewire.dashboard.dashboard')
@@ -101,12 +102,17 @@ class Dashboard extends Component
     }
     
     // work on the next
-    public function collections_streams_pie(){
-        $transactions = Stream::with('transacts')->get();
-        foreach ($transactions as $data) {
+    public function collections_streams_pie()
+    {
+    
+        $streams = Stream::with('transacts')->get();
+        
+    
+        foreach ($streams as $data) {
             $totalAmount = $data->transacts->sum('total_amount');
             $this->series1[] = $totalAmount;
             $this->labels1[] = $data->name;
         }
     }
+    
 }

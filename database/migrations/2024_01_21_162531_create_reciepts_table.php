@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -12,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reciepts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('transaction_id')->nullable();
             $table->dateTime('receipt_date')->nullable();
             $table->decimal('total_amount', 10, 2)->nullable();
@@ -30,6 +31,9 @@ return new class extends Migration
             $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
+
+        $statement = "ALTER TABLE reciepts AUTO_INCREMENT = 1000;";
+        DB::unprepared($statement);
     }
     /**
      * Reverse the migrations.

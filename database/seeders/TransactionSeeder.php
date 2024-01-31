@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Livewire\Dashboard\Customs;
 use App\Models\CustomDetail;
+use App\Models\Reciept;
 use App\Models\Transaction;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,7 +16,7 @@ class TransactionSeeder extends Seeder
      */
     public function run(): void
     {
-        Transaction::create([
+        $t1 = Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
             'employee_id' => null,
@@ -31,7 +32,7 @@ class TransactionSeeder extends Seeder
             'payment_method' => 'cash',
             'payment_status' => 1,
         ]);
-        Transaction::create([
+        $t2 = Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
             'employee_id' => null,
@@ -47,7 +48,7 @@ class TransactionSeeder extends Seeder
             'payment_method' => 'cash',
             'payment_status' => 1,
         ]);
-        Transaction::create([
+        $t2 = Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
             'employee_id' => null,
@@ -63,7 +64,7 @@ class TransactionSeeder extends Seeder
             'payment_method' => 'cash',
             'payment_status' => 1,
         ]);
-        Transaction::create([
+        $t3 = Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
             'employee_id' => null,
@@ -77,7 +78,7 @@ class TransactionSeeder extends Seeder
             'payment_method' => 'cash',
             'payment_status' => 1,
         ]);
-        Transaction::create([
+        $t4 = Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
             'employee_id' => null,
@@ -91,7 +92,7 @@ class TransactionSeeder extends Seeder
             'payment_method' => 'cash',
             'payment_status' => 1,
         ]);
-        $transac = Transaction::create([
+        $t5 = Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
             'employee_id' => null,
@@ -107,10 +108,75 @@ class TransactionSeeder extends Seeder
         ]);
 
         CustomDetail::create([
-            'transaction_id' => $transac->id,
+            'transaction_id' => $t5->id,
             'type' => 'vehicle',
             'vehicleRegNumber' => '8383762739',
             'entity' => 'vehicle'
+        ]);
+
+        Reciept::create([
+            'transaction_id' => $t5->id,
+            'receipt_date' => now(),
+            'total_amount'  => $t5->total_amount,
+            'discount_amount' => 0,
+            'tax_amount' => 0,
+            'net_amount' => $t5->total_amount,
+            'payment_method' => $t5->payment_method,
+            'payment_status' => $t5->total_amount,
+            'printed_date' => now(),
+            'voided' => 0,
+        ]);
+
+        Reciept::create([
+            'transaction_id' => $t1->id,
+            'receipt_date' => now(),
+            'total_amount'  => $t5->total_amount,
+            'discount_amount' => 0,
+            'tax_amount' => 0,
+            'net_amount' => $t5->total_amount,
+            'payment_method' => $t5->payment_method,
+            'payment_status' => $t5->total_amount,
+            'printed_date' => now(),
+            'voided' => 0,
+        ]);
+
+        Reciept::create([
+            'transaction_id' => $t2->id,
+            'receipt_date' => now(),
+            'total_amount'  => $t5->total_amount,
+            'discount_amount' => 0,
+            'tax_amount' => 0,
+            'net_amount' => $t5->total_amount,
+            'payment_method' => $t5->payment_method,
+            'payment_status' => $t5->total_amount,
+            'printed_date' => now(),
+            'voided' => 0,
+        ]);
+
+        Reciept::create([
+            'transaction_id' => $t3->id,
+            'receipt_date' => now(),
+            'total_amount'  => $t5->total_amount,
+            'discount_amount' => 0,
+            'tax_amount' => 0,
+            'net_amount' => $t5->total_amount,
+            'payment_method' => $t5->payment_method,
+            'payment_status' => $t5->total_amount,
+            'printed_date' => now(),
+            'voided' => 0,
+        ]);
+
+        Reciept::create([
+            'transaction_id' => $t4->id,
+            'receipt_date' => now(),
+            'total_amount'  => $t5->total_amount,
+            'discount_amount' => 0,
+            'tax_amount' => 0,
+            'net_amount' => $t5->total_amount,
+            'payment_method' => $t5->payment_method,
+            'payment_status' => $t5->total_amount,
+            'printed_date' => now(),
+            'voided' => 0,
         ]);
     }
 }

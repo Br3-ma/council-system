@@ -19,14 +19,12 @@
                         Display 
                     </label>
                     <div class="relative z-20 bg-transparent dark:bg-form-input">
-                        <!-- Update your select element with the wire:change directive -->
                         <select name="display" class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                             <option value="">--select--</option>
                             <option value="table">Table</option>
                             <option value="bar">Bar Chart</option>
                             <option value="pie">Pie Chart</option>
                             <option value="line">Line Chart</option>
-                            <option value="custom">Custom Chart</option>
                         </select>
         
                         <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">

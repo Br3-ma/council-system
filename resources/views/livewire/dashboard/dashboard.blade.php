@@ -1,7 +1,6 @@
 <main>
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         @include('livewire.partials.dashboard.stats')
-        
         <div class="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
             @include('livewire.partials.dashboard.total-collection-stream-chart')
             @include('livewire.partials.dashboard.total-collections-districts-chart')

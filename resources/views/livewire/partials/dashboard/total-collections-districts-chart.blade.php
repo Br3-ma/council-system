@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div class="flex w-full flex-wrap gap-3 sm:gap-5">
             <h4 class="text-xl font-bold text-black dark:text-white">
-                Daily Collections by Location
+                Overview Collections by Location
             </h4>
             {{-- <div class="flex min-w-47.5">
                 <span class="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
@@ -43,26 +43,23 @@
         </div> --}}
     </div>
     <div>
-        <div id="barchart2" class="-ml-5"></div>
+        <div id="piechartx" class="-ml-5"></div>
     </div>
 </div>
+
 @push('js')
 <script>
     var options = {
         chart: {
-            type: 'bar',
-            height: 500
+            type: 'pie',
+            width: 500,
+            height: 350 // Adjust height as needed
         },
-        series: [{
-            name: 'Total Amount',
-            data: @json($series)
-        }],
-        xaxis: {
-            categories: @json($categories)
-        }
+        series: @json($series1),
+        labels: @json($labels1)
     };
 
-    var chart = new ApexCharts(document.querySelector("#barchart2"), options);
+    var chart = new ApexCharts(document.querySelector("#piechartx"), options);
     chart.render();
-</script>    
+</script>
 @endpush

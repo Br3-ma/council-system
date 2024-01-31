@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -12,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('branch_id')->nullable();
             $table->unsignedBigInteger('stream_id')->nullable();
             $table->unsignedBigInteger('customer_id')->nullable();
@@ -34,6 +35,8 @@ return new class extends Migration
             $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
+        $statement = "ALTER TABLE transactions AUTO_INCREMENT = 1000;";
+        DB::unprepared($statement);
     }
     
     /**
