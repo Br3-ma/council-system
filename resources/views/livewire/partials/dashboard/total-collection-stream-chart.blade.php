@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div class="flex w-full flex-wrap gap-3 sm:gap-5">
             <h4 class="text-xl font-bold text-black dark:text-white">
-                Daily Collections
+                5 Daily Collections | Bar Chart
             </h4>
             {{-- <div class="flex min-w-47.5">
                 <span class="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-primary">
