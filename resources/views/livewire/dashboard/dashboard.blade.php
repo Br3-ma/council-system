@@ -5,8 +5,10 @@
             @include('livewire.partials.dashboard.collection-trend-chart')
             @include('livewire.partials.dashboard.collection-trend2-chart')
             @include('livewire.partials.dashboard.total-collection-stream-chart')
-            @include('livewire.partials.dashboard.total-collections-districts-chart')
-            {{-- @include('livewire.partials.dashboard.total-collections-chart-breakdown') --}}
+            <div class="col-span-12 flex gap-8">
+                @include('livewire.partials.dashboard.total-collections-districts-chart')
+                @include('livewire.partials.dashboard.total-collections-chart-breakdown')
+            </div>
             {{-- @include('livewire.partials.dashboard.collections-streams-chart') --}}
             {{-- @include('livewire.partials.dashboard.recent-transactions') --}}
         </div>
