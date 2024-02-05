@@ -660,5 +660,18 @@
         $('#today_collections_dash').DataTable(); 
       });
     </script>
+<script type="text/javascript">
+  $(document).ready(function (e) {
+    $('#prof_image_create').change(function(){
+      let reader = new FileReader();
+      reader.onload = (e) => { 
+          $('#preview-image-before-upload_create').attr('src', e.target.result).width(200).height(130); // Set the width and height to your desired values
+      }
+      reader.readAsDataURL(this.files[0]); 
+    });
+  });
+</script>
+
+
 </body>
 </html>

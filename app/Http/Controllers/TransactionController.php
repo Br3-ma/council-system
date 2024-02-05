@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomDetail;
+use App\Models\Reciept;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -33,17 +34,17 @@ class TransactionController extends Controller
         $data = $request->toArray();
 
         $t = Transaction::create([
-            'stream_id' => $data['revenue_stream_id'],  //Wait for API I will give you for locations added by admin
+            'stream_id' => $data['revenueStreamID'],  //Wait for API I will give you for locations added by admin
             'customer_id' => null, //nullable for now
             'employee_id' => null, //nullable for now
-            'terminal_id' => 1, //nullable or Wait for API I will give you for locations added by admin
-            'district_id' => $data['location_id'],  //Wait for API I will give you for locations added by admin
-            'transaction_date' => now(), // or $data['date'],
-            'total_amount' => $data['amount'],
+            'terminal_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
+            'district_id' => $data['locationID'],  //Wait for API I will give you for locations added by admin
+            'transaction_date' => $data['timestamp'], // or $data['date'],
+            'total_amount' => $data['feeAmount'],
             'discount_amount' => 0, //nullable
             'tax_amount' => 0, //nullable
-            'net_amount' => $data['amount'], //nullable
-            'payment_method' => $data['payment_method'], //cash etc
+            'net_amount' => $data['feeAmount'], //nullable
+            'payment_method' => $data['paymentType'], //cash etc
             'payment_status' => 1,
         ]);
         
@@ -52,10 +53,15 @@ class TransactionController extends Controller
             CustomDetail::create([
                 'transaction_id' => $t->id,
                 'type' =>  $data['customs_type'],
-                'vehicleRegNumber' =>  $data['vehicle_reg_num'],
+                'vehicleRegNumber' =>  $data['vehicleRegNumber'],
                 'entity' =>  $data['entity']
             ]);
         }
+
+        Reciept::create([
+            'transaction_id' => $t->id,
+            'receipt_number' =>  $data['receiptNumber'],
+        ]);
     }
 
     /**

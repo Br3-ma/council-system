@@ -12,18 +12,7 @@ class Reciept extends Model
 
     protected $fillable = [
         'transaction_id',
-        'receipt_date',
-        'total_amount',
-        'discount_amount',
-        'tax_amount',
-        'net_amount',
-        'payment_method',
-        'payment_status',
-        'change_amount',
-        'printed_by_employee_id',
-        'printed_date',
-        'additional_notes',
-        'voided',
+        'receipt_number',
     ];
 
     // Define relationships with other models

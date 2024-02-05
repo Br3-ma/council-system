@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('streams', function (Blueprint $table) {
+        Schema::create('stream_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
-            $table->string('type')->nullable();
-            $table->string('code')->nullable();
-            $table->string('icon')->nullable();
+            $table->unsignedBigInteger('stream_id')->nullable();
             $table->text('description')->nullable();
-            $table->float('amount', 9, 3)->nullable();
+            $table->integer('status')->default(1);
+            $table->integer('is_deleted')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('streams');
+        Schema::dropIfExists('stream_details');
     }
 };

@@ -36,16 +36,16 @@ class Dashboard extends Component
 
     public function get_stats(){
         $this->total_today = $this->total_collected_today();
+
         $this->num_of_transaction_today = $this->num_transaction_today();
         $this->num_of_streams = $this->num_revenue_streams();
         $this->total_net_collected = $this->net_collected();
         $this->total_gross_collected = $this->gross_collected();
-        
         // Modals
         $this->transactions = Transaction::orderBy('created_at', 'desc')->get();
         $today = Carbon::today();
         $this->transactions_today = Transaction::whereDate('created_at', $today)->orderBy('created_at', 'desc')->get();
-        $this->streams = Stream::with('transacts')->orderBy('name', 'asc')->get();
+        $this->streams = Stream::with('transacts')->orderBy('id', 'asc')->get();
     }
 
 

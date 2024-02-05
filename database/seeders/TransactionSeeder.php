@@ -31,6 +31,8 @@ class TransactionSeeder extends Seeder
             'net_amount' => 350,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(1), 
+            // Set the created_at date for the second transaction
         ]);
         $t2 = Transaction::create([
             'stream_id' => 1,
@@ -47,6 +49,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(2),
         ]);
         $t2 = Transaction::create([
             'stream_id' => 1,
@@ -63,6 +66,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(2),
         ]);
         $t3 = Transaction::create([
             'stream_id' => 2,
@@ -76,7 +80,7 @@ class TransactionSeeder extends Seeder
             'tax_amount' => 0,
             'net_amount' => 150,
             'payment_method' => 'cash',
-            'payment_status' => 1,
+            'created_at' => now()->subDays(3),
         ]);
         $t4 = Transaction::create([
             'stream_id' => 3,
@@ -91,6 +95,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(2),
         ]);
         $t5 = Transaction::create([
             'stream_id' => 3,
@@ -105,6 +110,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(4),
         ]);
 
         CustomDetail::create([
@@ -192,6 +198,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(5),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -205,6 +212,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(4),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -218,6 +226,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(3),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -231,6 +240,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(5),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -244,6 +254,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(6),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -257,6 +268,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(6),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -270,6 +282,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(6),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -283,6 +296,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(7),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -296,6 +310,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(4),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -309,6 +324,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(4),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -322,6 +338,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(2),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -335,6 +352,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(3),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -348,6 +366,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(2),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -361,6 +380,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(8),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -374,6 +394,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(9),
         ]);Transaction::create([
             'stream_id' => 2,
             'customer_id' => null,
@@ -387,6 +408,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(10),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -400,6 +422,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(12),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -413,6 +436,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(12),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -426,6 +450,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(14),
         ]);Transaction::create([
             'stream_id' => 3,
             'customer_id' => null,
@@ -439,6 +464,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(15),
         ]);Transaction::create([
             'stream_id' => 1,
             'customer_id' => null,
@@ -452,6 +478,7 @@ class TransactionSeeder extends Seeder
             'net_amount' => 150,
             'payment_method' => 'cash',
             'payment_status' => 1,
+            'created_at' => now()->subDays(20),
         ]);
     }
 }

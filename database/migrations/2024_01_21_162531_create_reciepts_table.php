@@ -15,20 +15,7 @@ return new class extends Migration
         Schema::create('reciepts', function (Blueprint $table) {
             $table->bigIncrements('id')->unsigned();
             $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->dateTime('receipt_date')->nullable();
-            $table->decimal('total_amount', 10, 2)->nullable();
-            $table->decimal('discount_amount', 10, 2)->nullable();
-            $table->decimal('tax_amount', 10, 2)->nullable();
-            $table->decimal('net_amount', 10, 2)->nullable();
-            $table->string('payment_method')->nullable();
-            $table->string('payment_status')->nullable();
-            $table->decimal('change_amount', 10, 2)->nullable();
-            $table->unsignedBigInteger('printed_by_employee_id')->nullable();
-            $table->dateTime('printed_date')->nullable();
-            $table->text('additional_notes')->nullable();
-            $table->integer('voided')->default(0);
-            $table->integer('status')->default(0);
-            $table->integer('is_deleted')->default(0);
+            $table->string('receipt_number')->nullable();
             $table->timestamps();
         });
 
