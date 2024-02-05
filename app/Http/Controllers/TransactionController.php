@@ -30,38 +30,45 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // Data is an array with payload from the Mobile App
-        $data = $request->toArray();
+        try {
+            // Data is an array with payload from the Mobile App
+            $data = $request->toArray();
 
-        $t = Transaction::create([
-            'stream_id' => $data['revenueStreamID'],  //Wait for API I will give you for locations added by admin
-            'customer_id' => null, //nullable for now
-            'employee_id' => null, //nullable for now
-            'terminal_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
-            'district_id' => $data['locationID'],  //Wait for API I will give you for locations added by admin
-            'transaction_date' => $data['timestamp'], // or $data['date'],
-            'total_amount' => $data['feeAmount'],
-            'discount_amount' => 0, //nullable
-            'tax_amount' => 0, //nullable
-            'net_amount' => $data['feeAmount'], //nullable
-            'payment_method' => $data['paymentType'], //cash etc
-            'payment_status' => 1,
-        ]);
-        
-        // A field to specific if a transaction contains customs data (make it true or false)
-        if( $data['customs']){
-            CustomDetail::create([
-                'transaction_id' => $t->id,
-                'type' =>  $data['customs_type'],
-                'vehicleRegNumber' =>  $data['vehicleRegNumber'],
-                'entity' =>  $data['entity']
+            $t = Transaction::create([
+                'stream_id' => $data['revenueStreamID'],  //Wait for API I will give you for stream added by admin
+                'customer_id' => null, //nullable for now
+                'employee_id' => null, //nullable for now
+                'terminal_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
+                'district_id' => $data['locationID'],  //Wait for API I will give you for locations added by admin
+                'transaction_date' => $data['timestamp'], // or $data['date'],
+                'total_amount' => $data['feeAmount'],
+                'discount_amount' => 0, //nullable
+                'tax_amount' => 0, //nullable
+                'net_amount' => $data['feeAmount'], //nullable
+                'payment_method' => $data['paymentType'], //cash etc
+                'payment_status' => 1,
             ]);
-        }
+            
+            // A field to specific if a transaction contains customs data (make it true or false)
+            if( $data['customs']){
+                CustomDetail::create([
+                    'transaction_id' => $t->id,
+                    'type' =>  $data['customs_type'],
+                    'vehicleRegNumber' =>  $data['vehicleRegNumber'],
+                    'entity' =>  $data['entity']
+                ]);
+            }
 
-        Reciept::create([
-            'transaction_id' => $t->id,
-            'receipt_number' =>  $data['receiptNumber'],
-        ]);
+            Reciept::create([
+                'transaction_id' => $t->id,
+                'receipt_number' =>  $data['receiptNumber'],
+            ]);
+
+            // Return a JSON response with the created transaction
+            return response()->json(['transaction' => $t], 201);
+        } catch (\Throwable $th) {
+            return response()->json(['transaction' => []], 500);
+        }
     }
 
     /**

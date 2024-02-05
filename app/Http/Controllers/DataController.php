@@ -20,6 +20,6 @@ class DataController extends Controller
     public function get_locations()
     {
         $districts = District::orderBy('name', 'asc')->get();
-        return response()->json(['locations' => $districts]);
+        return response()->json(['district' => $districts]);
     }
 }
