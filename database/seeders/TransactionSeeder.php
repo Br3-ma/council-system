@@ -122,67 +122,27 @@ class TransactionSeeder extends Seeder
 
         Reciept::create([
             'transaction_id' => $t5->id,
-            'receipt_date' => now(),
-            'total_amount'  => $t5->total_amount,
-            'discount_amount' => 0,
-            'tax_amount' => 0,
-            'net_amount' => $t5->total_amount,
-            'payment_method' => $t5->payment_method,
-            'payment_status' => $t5->total_amount,
-            'printed_date' => now(),
-            'voided' => 0,
+            'receipt_number' =>$t3->id + 100,
         ]);
 
         Reciept::create([
             'transaction_id' => $t1->id,
-            'receipt_date' => now(),
-            'total_amount'  => $t5->total_amount,
-            'discount_amount' => 0,
-            'tax_amount' => 0,
-            'net_amount' => $t5->total_amount,
-            'payment_method' => $t5->payment_method,
-            'payment_status' => $t5->total_amount,
-            'printed_date' => now(),
-            'voided' => 0,
+            'receipt_number' =>$t3->id + 100,
         ]);
 
         Reciept::create([
             'transaction_id' => $t2->id,
-            'receipt_date' => now(),
-            'total_amount'  => $t5->total_amount,
-            'discount_amount' => 0,
-            'tax_amount' => 0,
-            'net_amount' => $t5->total_amount,
-            'payment_method' => $t5->payment_method,
-            'payment_status' => $t5->total_amount,
-            'printed_date' => now(),
-            'voided' => 0,
+            'receipt_number' =>$t3->id + 100,
         ]);
 
         Reciept::create([
             'transaction_id' => $t3->id,
-            'receipt_date' => now(),
-            'total_amount'  => $t5->total_amount,
-            'discount_amount' => 0,
-            'tax_amount' => 0,
-            'net_amount' => $t5->total_amount,
-            'payment_method' => $t5->payment_method,
-            'payment_status' => $t5->total_amount,
-            'printed_date' => now(),
-            'voided' => 0,
+            'receipt_number' =>$t3->id + 100,
         ]);
 
         Reciept::create([
             'transaction_id' => $t4->id,
-            'receipt_date' => now(),
-            'total_amount'  => $t5->total_amount,
-            'discount_amount' => 0,
-            'tax_amount' => 0,
-            'net_amount' => $t5->total_amount,
-            'payment_method' => $t5->payment_method,
-            'payment_status' => $t5->total_amount,
-            'printed_date' => now(),
-            'voided' => 0,
+            'receipt_number' =>$t3->id + 100,
         ]);
 
         Transaction::create([
