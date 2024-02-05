@@ -650,14 +650,35 @@
     <script>
       
       $(document).ready( function () {
-        $('#main_transations').DataTable();
-        $('#report_transactions').DataTable();
+        $('#main_transations').DataTable({
+            order: [[0, 'desc']],
+            columnDefs: [
+                { type: 'date', targets: 0 }
+            ]
+        });
+
+        $('#report_transactions').DataTable({
+            order: [[0, 'desc']],
+            columnDefs: [
+                { type: 'date', targets: 0 }
+            ]
+        });
         $('#summary_report_table').DataTable();
         $('#collections_report').DataTable();
         $('#revenue_streams').DataTable();
-        $('#transaction_list_dash').DataTable();
+        $('#transaction_list_dash').DataTable({
+            order: [[0, 'desc']],
+            columnDefs: [
+                { type: 'date', targets: 0 }
+            ]
+        });
         $('#revenue_streams_dash').DataTable(); 
-        $('#today_collections_dash').DataTable(); 
+        $('#today_collections_dash').DataTable({
+            order: [[0, 'desc']],
+            columnDefs: [
+                { type: 'date', targets: 0 }
+            ]
+        }); 
       });
     </script>
 <script type="text/javascript">

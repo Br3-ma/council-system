@@ -12,7 +12,7 @@ class Dashboard extends Component
 
     public $total_today, $total_net_collected, $total_gross_collected;
     public $num_of_streams, $num_of_transaction_today;
-    public $transactions, $transactions_today, $streams;
+    public $transactions, $transactions_today, $streams, $num_of_transactions, $num_of_transactions_today;
 
     // charts
     public $labels = []; //bar
@@ -36,7 +36,9 @@ class Dashboard extends Component
 
     public function get_stats(){
         $this->total_today = $this->total_collected_today();
-
+        $this->num_of_transactions = Transaction::count();
+        $this->num_of_transactions_today = $this->count_collected_today();
+        
         $this->num_of_transaction_today = $this->num_transaction_today();
         $this->num_of_streams = $this->num_revenue_streams();
         $this->total_net_collected = $this->net_collected();
@@ -71,6 +73,15 @@ class Dashboard extends Component
         $totalToday = Transaction::whereDate('created_at', $today)->sum('total_amount');
         return number_format($totalToday, 2);
     }
+
+    public function count_collected_today()
+    {
+        $today = Carbon::today();
+        $totalToday = Transaction::whereDate('created_at', $today);
+        return $totalToday->count();
+    }
+
+    
     public function num_transaction_today()
     {
         $today = Carbon::today();
