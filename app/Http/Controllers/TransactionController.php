@@ -30,6 +30,7 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         try {
             // Data is an array with payload from the Mobile App
             $data = $request->toArray();
@@ -67,7 +68,7 @@ class TransactionController extends Controller
             // Return a JSON response with the created transaction
             return response()->json(['transaction' => $t], 201);
         } catch (\Throwable $th) {
-            return response()->json(['transaction' => []], 500);
+            return response()->json(['transaction' => $th->getMessage()], 500);
         }
     }
 
