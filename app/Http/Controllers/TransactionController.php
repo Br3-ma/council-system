@@ -66,9 +66,9 @@ class TransactionController extends Controller
             ]);
 
             // Return a JSON response with the created transaction
-            return response()->json(['transaction' => $t], 201);
+            return response()->json(['transaction' => $t, 'message'=>'success'], 201);
         } catch (\Throwable $th) {
-            return response()->json(['transaction' => $th->getMessage()], 500);
+            return response()->json(['transaction' => $th->getMessage(), 'message'=>'failed'], 500);
         }
     }
 

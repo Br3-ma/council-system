@@ -34,6 +34,10 @@ class Dashboard extends Component
         ->layout('layouts.app');
     }
 
+    public function refetchData(){
+        dd('here');
+    }
+
     public function get_stats(){
         $this->total_today = $this->total_collected_today();
         $this->num_of_transactions = Transaction::count();
