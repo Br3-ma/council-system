@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 class Dashboard extends Component
 {
 
+    protected $listeners = ['refreshDashboard' => '$refresh'];
     public $total_today, $total_net_collected, $total_gross_collected;
     public $num_of_streams, $num_of_transaction_today;
     public $transactions, $transactions_today, $streams, $num_of_transactions, $num_of_transactions_today;
@@ -33,8 +34,9 @@ class Dashboard extends Component
         ->layout('layouts.app');
     }
 
-    public function refetchData(){
-        dd('here');
+    // This function will be called every 3 seconds
+    public function poll()
+    {
         $this->get_stats();
         $this->collections_by_streams();
         $this->collections_streams_pie();

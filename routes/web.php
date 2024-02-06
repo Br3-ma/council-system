@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashbaordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
 use App\Livewire\Dashboard\Calendar;
@@ -48,6 +49,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     // Controllers
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
     Route::post('/create-role', [UserRoleController::class, 'store'])->name('create-role');
+
+    // APIs
+    Route::get('/collections_by_streams', [DashbaordController::class, 'collections_by_streams'])->name('area-trend');
+
 });
 
 

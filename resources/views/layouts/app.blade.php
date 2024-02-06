@@ -605,9 +605,9 @@
         {{ $slot}}
         <!-- ===== Main Content End ===== -->
       </div>
-      @livewireScripts
+
       <!-- ===== Content Area End ===== -->
-    </div>
+    </div>      
     <!-- ===== Page Wrapper End ===== -->
   <script defer src="{{ asset('/public/js/bundle.js')}}"></script>
   {{-- <script defer src="../static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8487c4d2ae9e5fd6","version":"2024.1.0","r":1,"token":"67f7a278e3374824ae6dd92295d38f77","b":1}' crossorigin="anonymous"></script> --}}
@@ -688,8 +688,9 @@
       });
     });
   </script>
-
+  
   @stack('js')
   @stack('modals')
+  @livewireScripts
 </body>
 </html>

@@ -10,24 +10,43 @@
         <div id="areachart" class="-ml-5"></div>
     </div>
 </div>
-
 @push('js')
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    var options = {
-        chart: {
-            type: 'area', // Change from 'bar' to 'area'
-            height: 500
-        },
-        series: [{
-            name: 'Amount',
-            data: @json($series)
-        }],
-        xaxis: {
-            categories: @json($categories)
-        }
-    };
+    var options;
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 3000);
+    function fetchData() {
+        options = [];
+        axios.get("{{ url('/collections_by_streams') }}", {
+                params: {
+                    // Append timestamp to the URL to prevent caching
+                    timestamp: new Date().getTime()
+                }
+            })
+            .then(response => {
+                options = {
+                    chart: {
+                        type: 'area', // Change from 'bar' to 'area'
+                        height: 500
+                    },
+                    series: [{
+                        name: 'Amount',
+                        data: response.data.series
+                    }],
+                    xaxis: {
+                        categories: response.data.categories
+                    }
+                };
 
-    var chart = new ApexCharts(document.querySelector("#areachart"), options);
-    chart.render();
+                var chart = new ApexCharts(document.querySelector("#areachart"), options);
+                chart.render();
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
 </script>
 @endpush
+
+

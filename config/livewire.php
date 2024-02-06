@@ -55,7 +55,7 @@ return [
     'asset_url' => '/council/dashboard/public/vendor/livewire/livewire.js',
 
 
-
+    'full_page_component_mode' => true,
 
     // 'lazy_placeholder' => null,
 

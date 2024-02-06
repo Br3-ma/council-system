@@ -64,7 +64,7 @@ class TransactionController extends Controller
                 'transaction_id' => $t->id,
                 'receipt_number' =>  $data['receiptNumber'],
             ]);
-
+            
             // Return a JSON response with the created transaction
             return response()->json(['transaction' => $t, 'message'=>'success'], 201);
         } catch (\Throwable $th) {
