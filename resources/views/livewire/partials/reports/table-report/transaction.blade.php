@@ -4,11 +4,11 @@
             <table id="report_transactions" class="w-full table-auto">
             <thead>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
+                  <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
+                      Date
+                  </th>
                     <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white xl:pl-11"> 
                         Transaction ID
-                    </th>
-                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
-                        Date
                     </th>
                     <th class="min-w-[100px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
                         Revenue Stream
@@ -27,13 +27,13 @@
             <tbody>
                 @forelse ($transactions as $t)
                   <tr>
+                    <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      {{ $t->created_at->toFormattedDateString() }}
+                    </td>
                     <td class="border-b border-[#eee] py-5 px-12 dark:border-strokedark">
                       <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
                           {{ $t->id }}
                       </p>
-                    </td>
-                    <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      {{ $t->created_at->toFormattedDateString() }}
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
@@ -42,7 +42,7 @@
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
-                      {{ $t->district->name }}
+                        {{ $t->district != null ? $t->district->name : '' }}
                       </p>
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -52,7 +52,7 @@
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <a href="#" class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success text-success':'bg-danger text-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium ">
-                        {{ $t->receipt != null ? $t->receipt->id : '--' }}
+                        {{ $t->receipt != null ? $t->receipt->receipt_number : '--' }}
                       </a>
                     </td>
                   </tr>

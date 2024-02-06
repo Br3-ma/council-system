@@ -75,7 +75,7 @@
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
                   
-                    {{ $t->stream != null ? $t->stream->name : 'removed' }}
+                    {{ $t->stream != null ? $t->stream->name : '' }}
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -85,12 +85,12 @@
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      --
+                      {{$t->terminal_id}}
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{ $t->district != null ? $t->district->name : 'removed' }}
+                      {{ $t->district != null ? $t->district->name : '' }}
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

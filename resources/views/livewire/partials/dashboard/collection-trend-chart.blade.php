@@ -19,7 +19,7 @@
             height: 500
         },
         series: [{
-            name: 'Total Amount',
+            name: 'Amount',
             data: @json($series)
         }],
         xaxis: {

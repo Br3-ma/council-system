@@ -21,13 +21,12 @@ class Dashboard extends Component
     public $series1 = []; //pie
     public $categories = [];
 
-
-
     public function render()
     {
         $this->get_stats();
         $this->collections_by_streams();
         $this->collections_streams_pie();
+
         // dd($this->chart1Data);
         // dd($this->chart1Categories);
         return view('livewire.dashboard.dashboard')
@@ -36,6 +35,9 @@ class Dashboard extends Component
 
     public function refetchData(){
         dd('here');
+        $this->get_stats();
+        $this->collections_by_streams();
+        $this->collections_streams_pie();
     }
 
     public function get_stats(){

@@ -11,21 +11,21 @@
       Dashboard | Council Revenue System
     </title>
     @livewireStyles
-  <link rel="icon" href="favicon.ico"><link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-  {{-- <script nonce="15f83326-1390-4f9a-9d27-19183938fc6a">
-      try { (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
-        console.error('Failed to run Cloudflare Zaraz: ', err)
-        fetch('/cdn-cgi/zaraz/t', {
-          credentials: 'include',
-          keepalive: true,
-          method: 'GET',
-        })
-      };
-    
-  </script> --}}
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
-  <style>
+    <link rel="icon" href="favicon.ico"><link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    {{-- <script nonce="15f83326-1390-4f9a-9d27-19183938fc6a">
+        try { (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
+          console.error('Failed to run Cloudflare Zaraz: ', err)
+          fetch('/cdn-cgi/zaraz/t', {
+            credentials: 'include',
+            keepalive: true,
+            method: 'GET',
+          })
+        };
+      
+    </script> --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
+    <style>
     #reportSearchModal, #newDistrictModal, #newStreamModal, #transactionList, 
     #todayCollections, #revenueStreams {
         display: none;
@@ -60,7 +60,7 @@
         cursor: pointer;
         z-index: 10001; /* Set a higher z-index for the close button to appear above the modal content */
     }
-</style>
+  </style>
 </head>
 
 <body
@@ -605,94 +605,91 @@
         {{ $slot}}
         <!-- ===== Main Content End ===== -->
       </div>
+      @livewireScripts
       <!-- ===== Content Area End ===== -->
     </div>
     <!-- ===== Page Wrapper End ===== -->
-  <script defer src="{{ asset('/public/js/bundle.js')}}"></script><script defer src="../static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8487c4d2ae9e5fd6","version":"2024.1.0","r":1,"token":"67f7a278e3374824ae6dd92295d38f77","b":1}' crossorigin="anonymous"></script>
-  
+  <script defer src="{{ asset('/public/js/bundle.js')}}"></script>
+  {{-- <script defer src="../static.cloudflareinsights.com/beacon.min.js/v84a3a4012de94ce1a686ba8c167c359c1696973893317" integrity="sha512-euoFGowhlaLqXsPWQ48qSkBSCFs3DPRyiwVu3FjR96cMPx+Fr+gpWRhIafcHwqwCqWS42RZhIudOvEI+Ckf6MA==" data-cf-beacon='{"rayId":"8487c4d2ae9e5fd6","version":"2024.1.0","r":1,"token":"67f7a278e3374824ae6dd92295d38f77","b":1}' crossorigin="anonymous"></script> --}}
+  <script>
+      function openModal(name) {
+          var modal = document.getElementById(name);
 
-    <script>
-        function openModal(name) {
-            var modal = document.getElementById(name);
-
-            if (modal) {
-                modal.style.display = "flex";
-            } else {
-                console.error("Modal with name '" + name + "' not found.");
-            }
-        }
-        
-        function closeModal(name) {
-            var modal = document.getElementById(name);
-
-            if (modal) {
-                modal.style.display = "none";
-            } else {
-                console.error("Modal with name '" + name + "' not found.");
-            }
-        }
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            var modal = document.getElementsByClassName("outer-closer")[0];
-
-            if (event.target === modal) {
-                closeModal();
-            }
-        };
-    </script>
-    @stack('js')
-
-
-    {{-- Pluggins --}}
-    <script src="https://code.jquery.com/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
-    <script>
-      
-      $(document).ready( function () {
-        $('#main_transations').DataTable({
-            order: [[0, 'desc']],
-            columnDefs: [
-                { type: 'date', targets: 0 }
-            ]
-        });
-
-        $('#report_transactions').DataTable({
-            order: [[0, 'desc']],
-            columnDefs: [
-                { type: 'date', targets: 0 }
-            ]
-        });
-        $('#summary_report_table').DataTable();
-        $('#collections_report').DataTable();
-        $('#revenue_streams').DataTable();
-        $('#transaction_list_dash').DataTable({
-            order: [[0, 'desc']],
-            columnDefs: [
-                { type: 'date', targets: 0 }
-            ]
-        });
-        $('#revenue_streams_dash').DataTable(); 
-        $('#today_collections_dash').DataTable({
-            order: [[0, 'desc']],
-            columnDefs: [
-                { type: 'date', targets: 0 }
-            ]
-        }); 
-      });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function (e) {
-        $('#prof_image_create').change(function(){
-          let reader = new FileReader();
-          reader.onload = (e) => { 
-              $('#preview-image-before-upload_create').attr('src', e.target.result).width(200).height(130); // Set the width and height to your desired values
+          if (modal) {
+              modal.style.display = "flex";
+          } else {
+              console.error("Modal with name '" + name + "' not found.");
           }
-          reader.readAsDataURL(this.files[0]); 
-        });
+      }
+      
+      function closeModal(name) {
+          var modal = document.getElementById(name);
+
+          if (modal) {
+              modal.style.display = "none";
+          } else {
+              console.error("Modal with name '" + name + "' not found.");
+          }
+      }
+
+      // Close the modal if the user clicks outside of it
+      window.onclick = function(event) {
+          var modal = document.getElementsByClassName("outer-closer")[0];
+
+          if (event.target === modal) {
+              closeModal();
+          }
+      };
+  </script>
+  {{-- Pluggins --}}
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <script>
+    $(document).ready( function () {
+      $('#main_transations').DataTable({
+          order: [[0, 'desc']],
+          columnDefs: [
+              { type: 'date', targets: 0 }
+          ]
       });
-    </script>
 
+      $('#report_transactions').DataTable({
+          order: [[0, 'desc']],
+          columnDefs: [
+              { type: 'date', targets: 0 }
+          ]
+      });
+      $('#summary_report_table').DataTable();
+      $('#collections_report').DataTable();
+      $('#revenue_streams').DataTable();
+      $('#transaction_list_dash').DataTable({
+          order: [[0, 'desc']],
+          columnDefs: [
+              { type: 'date', targets: 0 }
+          ]
+      });
+      $('#revenue_streams_dash').DataTable(); 
+      $('#today_collections_dash').DataTable({
+          order: [[0, 'desc']],
+          columnDefs: [
+              { type: 'date', targets: 0 }
+          ]
+      }); 
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function (e) {
+      $('#prof_image_create').change(function(){
+        let reader = new FileReader();
+        reader.onload = (e) => { 
+            $('#preview-image-before-upload_create').attr('src', e.target.result).width(200).height(130); // Set the width and height to your desired values
+        }
+        reader.readAsDataURL(this.files[0]); 
+      });
+    });
+  </script>
 
+  @stack('js')
+  @stack('modals')
 </body>
 </html>
