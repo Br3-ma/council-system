@@ -603,6 +603,8 @@
 
         <!-- ===== Main Content Start ===== -->
         {{ $slot}}
+        
+        @livewireScripts
         <!-- ===== Main Content End ===== -->
       </div>
 
@@ -691,6 +693,5 @@
   
   @stack('js')
   @stack('modals')
-  @livewireScripts
 </body>
 </html>
