@@ -18,7 +18,7 @@ class RevenueStreamSeeder extends Seeder
         $str = Stream::create([
             'code'=> 'MM',
             'type'=> 'market',
-            'name' => 'Market',
+            'name' => 'Main Market',
             'description' => 'Market bills'
         ]);
         StreamDetail::create([
@@ -57,7 +57,7 @@ class RevenueStreamSeeder extends Seeder
 
         // Toilets
         $toi = Stream::create([
-            'name' => 'Main Market',
+            'name' => 'Main Market T',
             'code'=> 'MMT',
             'type'=> 'toilet'
         ]);
@@ -179,7 +179,7 @@ class RevenueStreamSeeder extends Seeder
         $sand1 = Stream::create([
             'name' => 'Charcoal Levy',
             'code'=> 'CHL',
-            'type'=> 'sand'
+            'type'=> 'charcoal'
         ]);
         StreamDetail::create([
             'stream_id' => $sand1->id,
