@@ -9,7 +9,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign In | Council</title>
-  <link rel="icon" href="favicon.ico"><link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
+
+    <link rel="icon" href="fav.webp">
+  <link href="{{ asset('public/css/style.css')}}" rel="stylesheet">
   
   {{-- <script nonce="264409ac-18b5-4b14-863a-287dbec5920a">try { (function(w,d){!function(o,p,q,r){o[q]=o[q]||{};o[q].executed=[];o.zaraz={deferred:[],listeners:[]};o.zaraz.q=[];o.zaraz._f=function(s){return async function(){var t=Array.prototype.slice.call(arguments);o.zaraz.q.push({m:s,a:t})}};for(const u of["track","set","debug"])o.zaraz[u]=o.zaraz._f(u);o.zaraz.init=()=>{var v=p.getElementsByTagName(r)[0],w=p.createElement(r),x=p.getElementsByTagName("title")[0];x&&(o[q].t=p.getElementsByTagName("title")[0].text);o[q].x=Math.random();o[q].w=o.screen.width;o[q].h=o.screen.height;o[q].j=o.innerHeight;o[q].e=o.innerWidth;o[q].l=o.location.href;o[q].r=p.referrer;o[q].k=o.screen.colorDepth;o[q].n=p.characterSet;o[q].o=(new Date).getTimezoneOffset();if(o.dataLayer)for(const B of Object.entries(Object.entries(dataLayer).reduce(((C,D)=>({...C[1],...D[1]})),{})))zaraz.set(B[0],B[1],{scope:"page"});o[q].q=[];for(;o.zaraz.q.length;){const E=o.zaraz.q.shift();o[q].q.push(E)}w.defer=!0;for(const F of[localStorage,sessionStorage])Object.keys(F||{}).filter((H=>H.startsWith("_zaraz_"))).forEach((G=>{try{o[q]["z_"+G.slice(7)]=JSON.parse(F.getItem(G))}catch{o[q]["z_"+G.slice(7)]=F.getItem(G)}}));w.referrerPolicy="origin";w.src="cdn-cgi/zaraz/sd0d9.js?z="+btoa(encodeURIComponent(JSON.stringify(o[q])));v.parentNode.insertBefore(w,v)};["complete","interactive"].includes(p.readyState)?zaraz.init():o.addEventListener("DOMContentLoaded",zaraz.init)}(w,d,"zarazData","script");})(window,document) } catch (err) {
       console.error('Failed to run Cloudflare Zaraz: ', err)
@@ -44,16 +46,18 @@
   ></div>
 </div>
     <!-- ===== Page Wrapper Start ===== -->
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex h-screen overflow-hidden relative" style="background-image: url('{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKHuHB6g_q3mpFMk40_ObH1mPid8eyDIsYig&usqp=CAU') }}'); background-size: cover;">
+      <div class="absolute inset-0" style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(2px);"></div>
+  
 
       <!-- ===== Content Area Start ===== -->
       <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
         <!-- ===== Main Content Start ===== -->
         <main>
-          <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+          <div class="mx-auto p-4 2xl:p-10">
 
             <!-- ====== Forms Section Start -->
-            <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+            <div class=" rounded-sm shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="flex flex-wrap items-center">
                 <div class="hidden w-full xl:block xl:w-1/2">
                   <div class="py-17.5 px-26 text-center">
@@ -70,21 +74,21 @@
                       /> --}}
                     </a>
 
-                    <p class="font-medium 2xl:px-20">
+                    <p class="font-medium text-white 2xl:px-20">
                       For administration use only
                     </p>
 
                     <span class="mt-15 inline-block">
-                      <img src="https://media.istockphoto.com/id/945363034/vector/city-leaf-icon.jpg?s=612x612&w=0&k=20&c=D8bf7CdfH1OKNDLIDzTFYOBexc2jurO-nCc_jSsTjMw="
+                      <img width="50" src="fav.webp"
                         alt="illustration" />
                     </span> 
                   </div>
                 </div>
 
-                <div class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
-                  <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
+                <div class="w-full p-20 bg-white  xl:w-1/2 ">
+                  <div class="w-full p-10 sm:p-12.5 xl:p-17.5">
                     <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                      Council Revenue Management System
+                      Sign In
                     </h2>
 
 
@@ -163,7 +167,8 @@
                       </div>
 
                       <div class="mb-5">
-                        <input
+                        <p wire:loading>Please waiting...</p>
+                        <input wire:loading.remove
                           type="submit"
                           value="Sign In"
                           class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"

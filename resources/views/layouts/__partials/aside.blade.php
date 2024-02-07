@@ -5,9 +5,9 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-    <a href="index.html" class="text-orange-500">
-        Council System POS
-       {{--<img src="src/images/logo/logo.svg" alt="Logo" /> --}}
+    <a href="{{ route('dashboard') }}" class="font-bold text-warning">
+        Nakonde Council System 
+       {{-- <img src="https://media.istockphoto.com/id/1163657826/vector/people-social-community-ten-persons-together.jpg?s=612x612&w=0&k=20&c=qjMBKP0_euzIqyPEUy06Vjr6BTYfGW_lGt7JF5vE3Fo=" alt="Logo" /> --}}
     </a>
 
     <button

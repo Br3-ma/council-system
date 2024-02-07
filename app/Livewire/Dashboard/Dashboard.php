@@ -105,8 +105,12 @@ class Dashboard extends Component
     // Chart Traits
     public function collections_by_streams(){
     
-        // Fetch transactions within the date range and group by created_at date
-        $groupedTransactions = Transaction::orderBy('created_at')
+        // Fetch transactions within the last 29 days
+        $endDate = Carbon::now();
+        $startDate = $endDate->copy()->subDays(28);
+
+        $groupedTransactions = Transaction::whereBetween('created_at', [$startDate, $endDate])
+            ->orderBy('created_at')
             ->get()
             ->groupBy(function ($transaction) {
                 return $transaction->created_at->format('F j, Y'); // Format as "Month day, Year"
