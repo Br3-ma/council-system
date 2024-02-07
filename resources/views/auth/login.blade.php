@@ -91,7 +91,6 @@
                       Sign In
                     </h2>
 
-
                     <x-validation-errors class="mb-4" />
 
                     @if (session('status'))

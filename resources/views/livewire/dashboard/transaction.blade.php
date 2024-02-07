@@ -54,9 +54,7 @@
                   <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Machine ID
                   </th>
-                  <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
-                    Location
-                  </th>
+              
                   <th class="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
                     Status
                   </th>
@@ -95,11 +93,7 @@
                       {{$t->terminal_id}}
                     </p>
                   </td>
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{ $t->district != null ? $t->district->name : '' }}
-                    </p>
-                  </td>
+          
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
                       {{ $t->payment_status == 1 ? 'Success':'Failed' }}
