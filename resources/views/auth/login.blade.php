@@ -85,9 +85,9 @@
                   </div>
                 </div>
 
-                <div class="w-full p-20 bg-white  xl:w-1/2 ">
+                <div class="w-full p-20 bg-white text-primary xl:w-1/2 ">
                   <div class="w-full p-10 sm:p-12.5 xl:p-17.5">
-                    <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+                    <h2 style="color: black" class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                       Sign In
                     </h2>
 
@@ -101,7 +101,7 @@
                     <form method="POST" action="{{ route('login') }}">
                       @csrf
                       <div class="mb-4">
-                        <label
+                        <label  style="color: black"
                           class="mb-2.5 block font-medium text-black dark:text-white"
                           >User</label>
                         <div class="relative">
@@ -132,7 +132,7 @@
                       </div>
 
                       <div class="mb-6">
-                        <label
+                        <label  style="color: black"
                           class="mb-2.5 block font-medium text-black dark:text-white"
                           >Password</label>
                         <div class="relative">
