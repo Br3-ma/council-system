@@ -20,4 +20,7 @@ class CustomDetail extends Model
     public function user(){
         $this->belongsTo(User::class);
     }
+    public function transaction(){
+        $this->belongsTo(Transaction::class, 'transaction_id');
+    }
 }

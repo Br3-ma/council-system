@@ -11,6 +11,7 @@ use App\Livewire\Dashboard\RevenueStreams;
 use App\Livewire\Dashboard\StaffMember;
 use App\Livewire\Dashboard\Task;
 use App\Livewire\Dashboard\Transaction;
+use App\Livewire\Dashboard\TransactionDetail;
 use App\Livewire\Dashboard\UserRoles;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/tasks', Task::class)->name('tasks');
     Route::get('/transactions', Transaction::class)->name('transactions');
+    Route::get('/transaction-details/{id}', TransactionDetail::class)->name('details');
 
 
     Route::get('/report-generator', ReportGenerator::class)->name('generator');

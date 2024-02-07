@@ -35,7 +35,7 @@ class Transaction extends Model
     
         // Include stream and district relationships when the model is called
         static::retrieved(function ($transaction) {
-            $transaction->load('stream', 'district', 'receipt');
+            $transaction->load('stream', 'district', 'receipt', 'customs');
         });
     }
     
@@ -52,6 +52,10 @@ class Transaction extends Model
     public function receipt()
     {
         return $this->hasOne(Reciept::class, 'transaction_id');
+    }
+    public function customs()
+    {
+        return $this->hasMany(CustomDetail::class);
     }
 
     // Define relationships with other models

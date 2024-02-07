@@ -112,7 +112,7 @@
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div class="flex items-center space-x-3.5">
-                      <button class="hover:text-primary">
+                      <a href="{{route('details', $t->id)}}" class="hover:text-primary">
                         <svg
                           class="fill-current"
                           width="18"
@@ -130,7 +130,7 @@
                             fill=""
                           />
                         </svg>
-                      </button>
+                      </a>
                     </div>
                   </td>
                 </tr>
