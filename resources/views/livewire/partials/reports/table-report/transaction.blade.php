@@ -4,33 +4,33 @@
             <table id="report_transactions" class="w-full table-auto">
             <thead>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
+                    <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white"> 
                       Date
                     </th>
-                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white xl:pl-11"> 
+                    <th class="min-w-[100px] py-4 px-4  font-medium text-black dark:text-white xl:pl-11"> 
                       Transaction ID
                     </th>
                     <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                       Amount
                     </th>
-                    <th class="min-w-[100px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
+                    <th class="min-w-[120px] py-4 px-4  font-medium text-black dark:text-white"> 
                       Revenue Stream
                     </th>
                     <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                       Machine ID
                     </th>
-                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
+                    {{-- <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
                       Location
-                    </th>
-                    <th class="min-w-[90px] py-4 px-4 text-sm font-medium text-black dark:text-white">
+                    </th> --}}
+                    <th class="min-w-[90px] py-4 px-4 font-medium text-black dark:text-white">
                       Status
                     </th>
-                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
+                    <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                       Receipt No.
                     </th>
-                    <th class="py-4 px-4 font-medium text-black dark:text-white">
+                    {{-- <th class="py-4 px-4 font-medium text-black dark:text-white">
                       Actions
-                    </th>
+                    </th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -45,15 +45,25 @@
                       </p>
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
+                      <h5 class="font-bold text-black fw-bold dark:text-white">
+                        K {{ $t->total_amount }}
+                      </h5>
+                    </td>
+                    <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-bold text-dark">
                       {{ $t->stream->name }}
                       </p>
                     </td>
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                        {{$t->terminal_id}}
+                      </p>
+                    </td>
+                    {{-- <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
                         {{ $t->district != null ? $t->district->name : '' }}
                       </p>
-                    </td>
+                    </td> --}}
                     <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success text-success':'bg-danger text-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium">
                         {{ $t->payment_status == 1 ? 'Success':'Failed' }}

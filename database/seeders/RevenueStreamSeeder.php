@@ -28,7 +28,7 @@ class RevenueStreamSeeder extends Seeder
         $str1 = Stream::create([
             'code'=> 'CM',
             'type'=> 'market',
-            'name' => 'Zesco',
+            'name' => 'Zesco Market',
             'description' => 'Market bills'
         ]);
         StreamDetail::create([
@@ -38,7 +38,7 @@ class RevenueStreamSeeder extends Seeder
         $str2 = Stream::create([
             'code'=> 'ZM',
             'type'=> 'market',
-            'name' => 'Nyondo',
+            'name' => 'Nyondo Market',
             'description' => 'Market bills'
         ]);
         StreamDetail::create([
@@ -48,7 +48,7 @@ class RevenueStreamSeeder extends Seeder
         $str3 = Stream::create([
             'code'=> 'TZ',
             'type'=> 'market',
-            'name' => 'Tazara',
+            'name' => 'Tazara Market',
             'description' => 'Market bills'
         ]);
         StreamDetail::create([
