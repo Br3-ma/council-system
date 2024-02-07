@@ -91,7 +91,7 @@
                                                 <label class="fs-6 font-bold fw-bold form-label mb-2">
                                                     <span class="required">Role name</span>
                                                 </label>
-                                                <input class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" placeholder="Enter a role name" name="name" value="{{ old('name') }}" />
+                                                <input class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" placeholder="Dont forget to the role name" name="name" />
                                             </div>
                                             <div class="fv-row">
                                                 <label class="fs-6 font-bold fw-bold form-label mb-2">Role Permissions</label>
@@ -102,7 +102,7 @@
                                                             @foreach($permissions as $g => $p)
                                                             <tr>
                                                                 <td>
-                                                                    <p class="text-gray-800">{{ ucwords($g) }} Management</p>
+                                                                    <p class="text-secondary font-bold mt-4">{{ ucwords($g) }} Management</p>
                                                                     <div class="flex flex-wrap gap-4">
                                                                         @foreach($p as $key => $perm)
                                                                             <label for="{{ 'permission'.$key }}" class="flex cursor-pointer select-none items-center">

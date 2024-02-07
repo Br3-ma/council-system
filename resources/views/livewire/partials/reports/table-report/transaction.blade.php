@@ -4,23 +4,32 @@
             <table id="report_transactions" class="w-full table-auto">
             <thead>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
-                  <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
+                    <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
                       Date
-                  </th>
+                    </th>
                     <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white xl:pl-11"> 
-                        Transaction ID
+                      Transaction ID
+                    </th>
+                    <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
+                      Amount
                     </th>
                     <th class="min-w-[100px] py-4 px-4 text-sm font-medium text-black dark:text-white"> 
-                        Revenue Stream
+                      Revenue Stream
+                    </th>
+                    <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
+                      Machine ID
                     </th>
                     <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
-                        Location
+                      Location
                     </th>
                     <th class="min-w-[90px] py-4 px-4 text-sm font-medium text-black dark:text-white">
-                        Status
+                      Status
                     </th>
                     <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
-                        Receipt No.
+                      Receipt No.
+                    </th>
+                    <th class="py-4 px-4 font-medium text-black dark:text-white">
+                      Actions
                     </th>
                 </tr>
             </thead>

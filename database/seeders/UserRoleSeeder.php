@@ -14,8 +14,6 @@ class UserRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        // $admin = Role::create(['name' => 'admin']);
-
          // Dashboard
          Permission::create(['name' => 'view stats','group'=>'dashboard','permission'=>'view stats'])
          ->syncRoles('admin');
@@ -41,6 +39,8 @@ class UserRoleSeeder extends Seeder
 
         // Transactions
          Permission::create(['name' => 'view transactions','group'=>'transactions','permission'=>'view transactions'])
+         ->syncRoles('admin');
+         Permission::create(['name' => 'view transaction details','group'=>'transactions','permission'=>'view transaction details'])
          ->syncRoles('admin');
          Permission::create(['name' => 'generate report','group'=>'transactions','permission'=>'generate report'])
          ->syncRoles('admin');

@@ -7,7 +7,7 @@
         </div>
     </div>
     <div>
-        <div id="piechartx" class="-ml-5"></div>
+        <div id="piechart21" class="-ml-5"></div>
     </div>
 </div>
 
@@ -23,7 +23,7 @@
         labels: @json($labels1)
     };
 
-    var chart = new ApexCharts(document.querySelector("#piechartx"), options);
+    var chart = new ApexCharts(document.querySelector("#piechart21"), options);
     chart.render();
 </script>
 @endpush

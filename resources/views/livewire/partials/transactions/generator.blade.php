@@ -24,7 +24,7 @@
                             <option value="table">Table</option>
                             <option value="bar">Bar Chart</option>
                             <option value="pie">Pie Chart</option>
-                            <option value="line">Line Chart</option>
+                            {{-- <option value="line">Line Chart</option> --}}
                         </select>
         
                         <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">
@@ -44,10 +44,10 @@
                         <select name="report_type" class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent py-3 px-5 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                             <option value="">--select--</option>
                             <option value="summary">Summary Report</option>
-                            <option value="collection">Collection Report</option>
+                            <option value="collection">Collection by Revenue Stream Report</option>
                             {{-- <option value="collection_stream">Collection by Revenue Stream Report</option>
                             <option value="collection_district">Collection by District Report</option> --}}
-                            <option value="transaction">Transaction Report</option>
+                            <option value="transaction">Transactions Report</option>
                         </select>
                         <span class="absolute top-1/2 right-4 z-30 -translate-y-1/2">
                             <svg class="fill-current" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -109,6 +109,7 @@
           <!-- Menu Item Calendar -->
 
           <!-- Menu Item Profile -->
+          @can('view districts')
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -138,6 +139,9 @@
               Districts
             </a>
           </li>
+          @endcan
+
+          @can('view revenue streams')
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -167,6 +171,9 @@
               Revenue Streams
             </a>
           </li>
+          @endcan
+
+          @can('view staff members')
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
@@ -196,6 +203,7 @@
               Staff Members
             </a>
           </li>
+          @endcan
           <!-- Menu Item Profile -->
 
           <!-- Menu Item Task -->
@@ -240,6 +248,8 @@
             </a>
           </li>
           @endcan
+
+          @can('view user roles')
           <li>
             <a class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
               href="{{ route('roles') }}">
@@ -249,6 +259,7 @@
                 User Roles 
             </a>
           </li>
+          @endcan
         </ul>
       </div>
 
@@ -356,7 +367,7 @@
     <!-- Sidebar Menu -->
 
     <!-- Promo Box -->
-    <div
+    {{-- <div
       class="mx-auto mb-10 w-full max-w-60 rounded-sm border border-strokedark bg-boxdark py-6 px-4 text-center shadow-default"
     >
       <h3 class="mb-1 font-semibold text-white">POS</h3>
@@ -369,7 +380,7 @@
       >
         POS Center
       </a>
-    </div>
+    </div> --}}
     <!-- Promo Box -->
   </div>
 </aside>

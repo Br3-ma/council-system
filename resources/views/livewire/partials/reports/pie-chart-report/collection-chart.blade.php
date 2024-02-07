@@ -7,12 +7,12 @@
         </div>
     </div>
     <div>
-        <div id="piechart"></div>
+        <div id="Collectionpie"></div>
     </div>
 </div>
-
 @push('js')
 <script>
+    console.log(@json($series));
     var options = {
         chart: {
             type: 'pie',
@@ -23,7 +23,7 @@
         labels: @json($labels)
     };
 
-    var chart = new ApexCharts(document.querySelector("#piechart"), options);
+    var chart = new ApexCharts(document.querySelector("#Collectionpie"), options);
     chart.render();
 </script>
 @endpush

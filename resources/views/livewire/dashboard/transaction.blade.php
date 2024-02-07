@@ -17,7 +17,7 @@
       </div>
 
       <div class="w-full flex items-center justify-end">
-        {{-- @can('generate report') --}}
+        @can('generate report')
         <button onclick="openModal('reportSearchModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
@@ -29,7 +29,7 @@
           
           Generate Report
         </button>
-        {{-- @endcan --}}
+        @endcan
       </div> 
 
 
@@ -42,20 +42,26 @@
                   <th class="min-w-[110px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Date
                   </th>
+                  <th class="min-w-[90px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"> 
+                    Transaction ID
+                  </th>
                   <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Amount
                   </th>
                   <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                     Revenue Stream
                   </th>
-                  <th class="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
-                    Status
-                  </th>
                   <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Machine ID
                   </th>
-                  <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                  <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Location
+                  </th>
+                  <th class="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
+                    Status
+                  </th>
+                  <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
+                    Receipt No.
                   </th>
                   <th class="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
@@ -68,16 +74,30 @@
                   <td class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                     <p class="text-black dark:text-white">{{ $t->created_at->toFormattedDateString() }}</p>
                   </td>
+                  <td class="border-b border-[#eee] py-5 px-12 dark:border-strokedark">
+                    <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
+                        {{ $t->id }}
+                    </p>
+                  </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <h5 class="font-bold text-black fw-bold dark:text-white">
                       K {{ $t->total_amount }}
                     </h5>
-                    
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
-                  
-                    {{ $t->stream != null ? $t->stream->name : '' }}
+                    <p class="inline-flex rounded-full  bg-opacity-10 py-1 px-3 text-sm font-bold text-dark">
+            
+                    {{ $t->stream != null ? $t->stream->name.' ('.$t->stream->code.')' : '' }}
+                    </p>
+                  </td>
+                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                      {{$t->terminal_id}}
+                    </p>
+                  </td>
+                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
+                      {{ $t->district != null ? $t->district->name : '' }}
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -86,14 +106,9 @@
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{$t->terminal_id}}
-                    </p>
-                  </td>
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{ $t->district != null ? $t->district->name : '' }}
-                    </p>
+                    <a href="#" class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success text-success':'bg-danger text-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium ">
+                      {{ $t->receipt != null ? $t->receipt->receipt_number : '--' }}
+                    </a>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div class="flex items-center space-x-3.5">

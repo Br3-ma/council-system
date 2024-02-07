@@ -18,6 +18,7 @@
         </nav>
       </div>
       <div class="w-full flex justify-between items-center">
+          @can('generate report')
           <button onclick="openModal('reportSearchModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
@@ -26,10 +27,9 @@
                 <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
               </svg>
             </span>
-            
             Generate Report
           </button>
-
+          @endcan
           <div class="flex">
             <span class="fw-bold font-bold text-black">From: <span class="text-warning">{{$from_date}}</span> To: <span class="text-warning">{{$to_date}}</span> </span>
           </div>

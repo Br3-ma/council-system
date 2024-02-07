@@ -14,6 +14,10 @@ class Stream extends Model
         'description',
         'status',
         'is_deleted',
+        'type',
+        'code',
+        'icon',
+        'amount',
     ];
 
     public function user(){
