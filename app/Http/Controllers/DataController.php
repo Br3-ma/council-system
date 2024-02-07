@@ -44,6 +44,7 @@ class DataController extends Controller
                     "revenueStreamID"=> $row->stream->id
                 ];
             }
+            
             return response()->json(['receipts' => $data]);
         } catch (\Throwable $th) {
             dd($th);

@@ -40,6 +40,7 @@ class TransactionController extends Controller
                 'customer_id' => null, //nullable for now
                 'employee_id' => null, //nullable for now
                 'terminal_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
+                'machine_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
                 'district_id' => $data['locationID'],  //Wait for API I will give you for locations added by admin
                 'transaction_date' => $data['timestamp'], // or $data['date'],
                 'total_amount' => $data['feeAmount'],
