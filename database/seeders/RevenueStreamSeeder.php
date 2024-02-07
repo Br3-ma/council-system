@@ -19,7 +19,8 @@ class RevenueStreamSeeder extends Seeder
             'code'=> 'MM',
             'type'=> 'market',
             'name' => 'Main Market',
-            'description' => 'Market bills'
+            'description' => 'Market Fees',
+            'icon' => 'healthicons:market-stall'
         ]);
         StreamDetail::create([
             'stream_id' => $str->id,
@@ -29,7 +30,8 @@ class RevenueStreamSeeder extends Seeder
             'code'=> 'CM',
             'type'=> 'market',
             'name' => 'Zesco Market',
-            'description' => 'Market bills'
+            'description' => 'Market Fees',
+            'icon' => 'healthicons:market-stall'
         ]);
         StreamDetail::create([
             'stream_id' => $str1->id,
@@ -39,7 +41,8 @@ class RevenueStreamSeeder extends Seeder
             'code'=> 'ZM',
             'type'=> 'market',
             'name' => 'Nyondo Market',
-            'description' => 'Market bills'
+            'description' => 'Market Fees',
+            'icon' => 'healthicons:market-stall'
         ]);
         StreamDetail::create([
             'stream_id' => $str2->id,
@@ -49,7 +52,8 @@ class RevenueStreamSeeder extends Seeder
             'code'=> 'TZ',
             'type'=> 'market',
             'name' => 'Tazara Market',
-            'description' => 'Market bills'
+            'description' => 'Market Fees',
+            'icon' => 'healthicons:market-stall'
         ]);
         StreamDetail::create([
             'stream_id' => $str3->id,
@@ -59,7 +63,8 @@ class RevenueStreamSeeder extends Seeder
         $toi = Stream::create([
             'name' => 'Main Market T',
             'code'=> 'MMT',
-            'type'=> 'toilet'
+            'type'=> 'toilet',
+            'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
             'stream_id' => $toi->id,
@@ -68,7 +73,8 @@ class RevenueStreamSeeder extends Seeder
         $toi1 = Stream::create([
             'name' => 'Bus Station',
             'code'=> 'BST',
-            'type'=> 'toilet'
+            'type'=> 'toilet',
+            'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
             'stream_id' => $toi1->id,
@@ -77,7 +83,8 @@ class RevenueStreamSeeder extends Seeder
         $toi2 = Stream::create([
             'name' => 'Wembley',
             'code'=> 'WBT',
-            'type'=> 'toilet'
+            'type'=> 'toilet',
+            'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
             'stream_id' => $toi2->id,
@@ -86,7 +93,8 @@ class RevenueStreamSeeder extends Seeder
         $toi3 = Stream::create([
             'name' => 'Chiyanga',
             'code'=> 'CGT',
-            'type'=> 'toilet'
+            'type'=> 'toilet',
+            'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
             'stream_id' => $toi3->id,
@@ -107,10 +115,10 @@ class RevenueStreamSeeder extends Seeder
 
         $customs1 = Stream::create([
             'code'=> 'CML',
-            'type'=> 'vehicle',
+            'type'=> 'customs',
             'name' => 'Van/Light Truck',
             'icon' => 'fa-solid:truck-moving',
-            'amount' => 70,
+            'amount' => 70
         ]);
         StreamDetail::create([
             'stream_id' => $customs1->id,
@@ -119,7 +127,7 @@ class RevenueStreamSeeder extends Seeder
 
         $customs2 = Stream::create([
             'code'=> 'CML',
-            'type'=> 'vehicle',
+            'type'=> 'customs',
             'name' => 'Rosa Bus',
             'amount' => 100,
             'icon' => 'fluent-emoji-high-contrast:bus'
@@ -143,7 +151,7 @@ class RevenueStreamSeeder extends Seeder
 
         $customs4 = Stream::create([
             'code'=> 'CML',
-            'type'=> 'vehicle',
+            'type'=> 'customs',
             'amount' => 150,
             'name' => 'Tanker',
             'icon' => 'mdi:tanker-truck'
@@ -155,7 +163,7 @@ class RevenueStreamSeeder extends Seeder
 
         $customs5 = Stream::create([
             'code'=> 'CML',
-            'type'=> 'vehicle',
+            'type'=> 'customs',
             'amount' => 250,
             'name' => 'Container',
             'icon' => 'mdi:train-car-container'

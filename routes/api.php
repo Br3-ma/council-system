@@ -25,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('v1/new-transaction', [TransactionController::class, 'store']);
 Route::get('v1/available-revenue-streams', [DataController::class, 'get_streams']);
 Route::get('v1/available-locations', [DataController::class, 'get_locations']);
+Route::get('v1/get-receipts/{machine_id}', [DataController::class, 'get_receipts']);
