@@ -65,7 +65,7 @@
                     @if (!empty($collection->customs->toArray()))
                     <div class="mb-3 md:mb-0">
                         <a href="#" class="inline-block font-medium text-black hover:text-primary dark:text-white">
-                            {{ $collection->streams->type }}
+                            {{ $collection->stream->type }}
                         </a>
                         <p class="flex text-sm font-medium">
                             <span class="mr-5"> Color: White </span>
