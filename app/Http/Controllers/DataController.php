@@ -28,27 +28,28 @@ class DataController extends Controller
     {
         try {
             $data = [];
-            $t = Transaction::where('machine_id', $id)->get();
-            foreach ($t as $key => $row) {
-                $data =[
-                    "receiptNumber"=> $row->receipt->receipt_number,
-                    "revenueStream"=> $row->stream->description,
-                    "entity"=> $row->stream->name,
-                    "feeAmount"=> $row->total_amount,
-                    "paymentType"=> $row->payment_method,
-                    "timestamp"=>  $row->created_at,
-                    "isSynced"=> $row->is_sync == 1 ? true : false,
-                    "machineID"=> $row->machine_id,
-                    "customs"=> $row->stream->type,
-                    "locationID"=> 1,
-                    "revenueStreamID"=> $row->stream->id
+            $transactions = Transaction::where('machine_id', $id)->get();
+    
+            foreach ($transactions as $key => $transaction) {
+                $data[] = [
+                    "receiptNumber" => $transaction->receipt->receipt_number,
+                    "revenueStream" => $transaction->stream->description,
+                    "entity" => $transaction->stream->name,
+                    "feeAmount" => $transaction->total_amount,
+                    "paymentType" => $transaction->payment_method,
+                    "timestamp" => $transaction->created_at,
+                    "isSynced" => $transaction->is_sync == 1 ? true : false,
+                    "machineID" => $transaction->machine_id,
+                    "customs" => $transaction->stream->type,
+                    "locationID" => 1,
+                    "revenueStreamID" => $transaction->stream->id
                 ];
             }
             
             return response()->json(['receipts' => $data]);
         } catch (\Throwable $th) {
-            dd($th);
+            // Handle the exception appropriately, e.g., log or return an error response
+            return response()->json(['error' => 'An error occurred.'.$th->getMessage()], 500);
         }
-    }
-    
+    }    
 }

@@ -39,7 +39,7 @@ class UserController extends Controller
             }
             
             $u = $user->create(array_merge($request->all(), [
-                'password' => bcrypt('nkonde@123@'),
+                'password' => bcrypt('nakonde@123@'),
                 'active' => 1,
                 'profile_photo_path' => $url ?? ''
             ]));
