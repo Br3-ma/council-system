@@ -57,11 +57,11 @@
           <div class="mx-auto p-4 2xl:p-10">
 
             <!-- ====== Forms Section Start -->
-            <div class=" rounded-sm shadow-default dark:border-strokedark dark:bg-boxdark">
+            <div class="rounded-sm ">
               <div class="flex flex-wrap items-center">
-                <div class="hidden w-full xl:block xl:w-1/2">
+                <div class="hidden w-full xl:block xl:w-1/2 bg-transparent">
                   <div class="py-17.5 px-26 text-center">
-                    <a class="mb-5.5 inline-block" href="index.html">
+                    <a class="mb-5.5 inline-block" href="#">
                       {{-- <img
                         class="hidden dark:block"
                         src="src/images/logo/logo.svg"
