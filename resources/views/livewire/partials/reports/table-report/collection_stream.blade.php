@@ -28,7 +28,7 @@
                 @forelse ($transactions as $t)
                     <tr>
                         <td class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                            <p class="text-black dark:text-white">{{ $t->created_at->toFormattedDateString() }}</p>
+                            <p class="text-black dark:text-white">{{ (new DateTime($t->created_at))->format('F j, Y g:i A') }}</p>
                         </td>
                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                             @php

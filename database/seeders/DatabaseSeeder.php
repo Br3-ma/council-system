@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvinceSeeder::class);
         $this->call(DistrictsSeeder::class);
         $this->call(RevenueStreamSeeder::class);
-        $this->call(TransactionSeeder::class);
+        // $this->call(TransactionSeeder::class);
         $this->call(UserRoleSeeder::class);
         // \App\Models\User::factory(10)->create();
 

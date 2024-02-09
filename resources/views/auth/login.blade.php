@@ -132,7 +132,7 @@
                       </div>
 
                       <div class="mb-6">
-                        <label  style="color: black"
+                      <label  style="color: black"
                           class="mb-2.5 block font-medium text-black dark:text-white"
                           >Password</label>
                         <div class="relative">

@@ -39,7 +39,7 @@
                   @forelse ($transactions as $t)
                       <tr>
                           <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                              {{ $t->created_at->toFormattedDateString() }}
+                            {{ (new DateTime($t->created_at))->format('F j, Y g:i A') }}
                           </td>
                           <td class="border-b border-[#eee] py-5 px-12 dark:border-strokedark">
                               <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
@@ -62,7 +62,7 @@
                           </td>
                           <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                               <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                                  {{ $t->terminal_id }}
+                                {{$t->machine_id ?? $t->terminal_id}}
                               </p>
                           </td>
                           {{-- <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

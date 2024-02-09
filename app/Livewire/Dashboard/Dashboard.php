@@ -54,7 +54,7 @@ class Dashboard extends Component
         // Modals
         $this->transactions = Transaction::orderBy('created_at', 'desc')->get();
         $today = Carbon::today();
-        $this->transactions_today = Transaction::whereDate('created_at', $today)->orderBy('created_at', 'desc')->get();
+        $this->transactions_today = Transaction::where('created_at', '<=', $today->toDateTimeString())->orderBy('created_at', 'desc')->get();
         $this->streams = Stream::with('transacts')->orderBy('id', 'asc')->get();
     }
 
@@ -78,7 +78,9 @@ class Dashboard extends Component
     public function total_collected_today()
     {
         $today = Carbon::today();
-        $totalToday = Transaction::whereDate('created_at', $today)->sum('total_amount');
+        // dd($today->toDateTimeString());
+        $totalToday = Transaction::where('created_at', '<=', $today->toDateTimeString())->sum('total_amount');
+        
         return number_format($totalToday, 2);
     }
 
@@ -113,7 +115,7 @@ class Dashboard extends Component
             ->orderBy('created_at')
             ->get()
             ->groupBy(function ($transaction) {
-                return $transaction->created_at->format('F j, Y'); // Format as "Month day, Year"
+                return Carbon::parse($transaction->created_at)->format('F j, Y');
             });
     
         // Extract series and categories arrays

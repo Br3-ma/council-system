@@ -9,7 +9,8 @@ class Transaction extends Model
 {
     use HasFactory;
     protected $table = 'transactions'; // Assuming your table is named 'transactions'
-
+    protected $dates = ['created_at', 'updated_at'];
+    public $timestamps = false;
     protected $fillable = [
         'stream_id',
         'customer_id',
@@ -27,6 +28,8 @@ class Transaction extends Model
         'payment_method',
         'payment_status',
         'is_sync',
+        'created_at',
+        'updated_at'
     ];
 
     protected static function boot()

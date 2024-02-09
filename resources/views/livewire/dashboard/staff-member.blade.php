@@ -337,7 +337,7 @@
                                             <a href="tel:{{$user->phone}}" class="text-gray-600 text-hover-primary mb-1">{{ $user->phone ?? 'No phone' }}</a>
                                         </div>
                                         <div class="relative flex items-center pt-0.5">
-                                            <p class="text-gray-600 text-hover-primary mb-1">{{ $user->created_at->toFormattedDateString() }}</p>
+                                            <p class="text-gray-600 text-hover-primary mb-1">{{ (new DateTime($user->created_at))->format('F j, Y g:i A') }}</p>
                                         </div>
                                     </label>
                                 </div>

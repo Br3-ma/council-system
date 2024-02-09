@@ -1,4 +1,5 @@
 <main>
+    @include('livewire.alerts.alerts')
     <div class="mx-auto max-w-screen-2xl md:p-6 2xl:p-10">
       
       <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -15,8 +16,48 @@
           </ol>
         </nav>
       </div>
+      <style>
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .form-container {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-upload {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #file-input {
+            display: none;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
 
       <div class="w-full flex items-center justify-end">
+        <div class="container">
+          <div class="form-container">
+              <h2>Bulk Import Excel</h2>
+              <form action="{{ route('bulk-upload') }}" method="post" enctype="multipart/form-data">
+                  @csrf
+                <label for="file-input" class="btn-upload">Choose Excel File</label>
+                  <input type="file" id="file-input" name="file" accept=".xlsx" required>
+                  <button type="submit" class="btn-upload">Upload</button>
+              </form>
+          </div>
+      </div>
+
         @can('generate report')
         <button onclick="openModal('reportSearchModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
           <span>
@@ -70,7 +111,7 @@
                 @forelse ($transactions as $t)
                 <tr>
                   <td class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                    <p class="text-black dark:text-white">{{ $t->created_at->toFormattedDateString() }}</p>
+                    <p class="text-black dark:text-white">{{ (new DateTime($t->created_at))->format('F j, Y g:i A') }}</p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-12 dark:border-strokedark">
                     <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
@@ -90,7 +131,7 @@
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{$t->terminal_id}}
+                      {{$t->machine_id ?? $t->terminal_id}}
                     </p>
                   </td>
           
