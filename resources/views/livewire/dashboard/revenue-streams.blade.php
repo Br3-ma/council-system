@@ -20,9 +20,11 @@
         <!-- ====== Table Section Start -->
         <div class="flex flex-col gap-10">
             <div class="w-full">
+            @can('add revenue streams')
             <button onclick="openModal('newStreamModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
                 Add New
             </button>
+            @endcan
             </div>
             
             @include('livewire.alerts.alerts')

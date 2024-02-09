@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class RevenueStreams extends Component
 {
-    public $streams, $name, $description;
+    public $streams, $name, $description, $amount, $type, $code, $icon;
     public function render()
     {
         $this->streams = Stream::with('transacts')->orderBy('name', 'asc')->get();
@@ -18,6 +18,10 @@ class RevenueStreams extends Component
         try {
             Stream::create([
                 'name'=>$this->name,
+                'type'=>$this->type,
+                'code'=>$this->code,
+                'icon'=>$this->icon,
+                'amount'=>$this->amount,
                 'description'=>$this->description,
             ]);
             session()->flash('success', 'Created Successfully');

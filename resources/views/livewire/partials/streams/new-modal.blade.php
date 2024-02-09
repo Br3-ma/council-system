@@ -15,18 +15,32 @@
         <form wire:submit.prevent="save_stream()" class="w-full rounded-sm mb-2 bg-white p-3 dark:border-strokedark dark:bg-boxdark" style="width: 500px" >
             @csrf
             <div class="w-full text-left">
-                <div class="relative">
-                    <label class="mb-3 block text-xs font-medium text-black dark:text-white">
-                        Name
-                    </label>
-                    <input wire:model="name" type="text" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                <div class="flex gap-2">
+                    <input placeholder="Name" wire:model="name" type="text" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                    &nbsp;
+                    <input placeholder="Code" wire:model="code" type="text" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                </div>
+                <br>
+                <div class="mt-2">
+                    <select wire:model="type" type="text" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
+                        <option value="">--Type--</option>
+                        <option value="market">Market</option>
+                        <option value="customs">Customs</option>
+                        <option value="toilet">Toilet</option>
+                        <option value="sand">Sand</option>
+                        <option value="charcoal">Charcoal</option>
+                    </select>
                 </div>
                 
                 <div class="relative mt-2">
-                    <label class="mb-3 block text-xs font-medium text-black dark:text-white">
-                        Description 
-                    </label>
-                    <textarea wire:model="description" rows="6" placeholder="Description" class="w-full rounded-lg border-[1.5px] border-primary bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:bg-form-input"></textarea>
+                    <textarea wire:model="description" rows="3" cols="3" placeholder="Description" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
+                </div>
+                
+                <div class="relative mt-2">
+                    <textarea wire:model="icon" rows="3" cols="3" placeholder="Icon" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"></textarea>
+                </div>
+                <div class="flex gap-2">
+                    <input placeholder="Charge Amount .ex 2.50" wire:model="amount" type="text" class="custom-input-date custom-input-date-1 w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary">
                 </div>
             </div>
         
