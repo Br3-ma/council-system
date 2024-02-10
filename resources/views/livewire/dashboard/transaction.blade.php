@@ -2,8 +2,33 @@
     @include('livewire.alerts.alerts')
     <div class="mx-auto max-w-screen-2xl md:p-6 2xl:p-10">
       <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <h2 class="text-title-md2 font-bold text-black dark:text-white">
-          Transactions
+        <h2 class="text-title-md2 flex items-center gap-2 font-bold text-black dark:text-white">
+          <svg
+                class="fill-current"
+                width="18"
+                height="19"
+                viewBox="0 0 18 19"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clip-path="url(#clip0_130_9756)">
+                  <path
+                    d="M15.7501 0.55835H2.2501C1.29385 0.55835 0.506348 1.34585 0.506348 2.3021V15.8021C0.506348 16.7584 1.29385 17.574 2.27822 17.574H15.7782C16.7345 17.574 17.5501 16.7865 17.5501 15.8021V2.3021C17.522 1.34585 16.7063 0.55835 15.7501 0.55835ZM6.69385 10.599V6.4646H11.3063V10.5709H6.69385V10.599ZM11.3063 11.8646V16.3083H6.69385V11.8646H11.3063ZM1.77197 6.4646H5.45635V10.5709H1.77197V6.4646ZM12.572 6.4646H16.2563V10.5709H12.572V6.4646ZM2.2501 1.82397H15.7501C16.0313 1.82397 16.2563 2.04897 16.2563 2.33022V5.2271H1.77197V2.3021C1.77197 2.02085 1.96885 1.82397 2.2501 1.82397ZM1.77197 15.8021V11.8646H5.45635V16.3083H2.2501C1.96885 16.3083 1.77197 16.0834 1.77197 15.8021ZM15.7501 16.3083H12.572V11.8646H16.2563V15.8021C16.2563 16.0834 16.0313 16.3083 15.7501 16.3083Z"
+                    fill=""
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_130_9756">
+                    <rect
+                      width="18"
+                      height="18"
+                      fill="white"
+                      transform="translate(0 0.052124)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+          Collection Transactions
         </h2>
         <nav>
           <ol class="flex items-center gap-2">
@@ -16,6 +41,7 @@
       </div>
     
       <div class="flex items-center justify-content-between">
+        @can('import transactions')
         <form action="{{ route('bulk-upload') }}" class="items-start w-3/4 md:w-auto mr-4 mb-2" method="post" enctype="multipart/form-data">
           @csrf
           <div class="flex">
@@ -40,9 +66,22 @@
           </span>Upload Excel
           </button>
         </form>
-    
+        @endcan
+
+{{-- 
+        <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center gap-2 rounded bg-info py-2 px-3 font-medium text-white hover:bg-opacity-80">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+              <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
+              <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+              <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
+            </svg>
+          </span>
+          Export 
+        </button> --}}
+
         @can('generate report')
-        <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center gap-2 rounded bg-primary py-2 px-3 font-medium text-white hover:bg-opacity-80">
+        <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-primary py-2 px-3 font-medium text-white hover:bg-opacity-80">
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
               <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>

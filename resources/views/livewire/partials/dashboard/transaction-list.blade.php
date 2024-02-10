@@ -1,8 +1,8 @@
 <div id="transactionList" class="outer-closer">
     <div class="modal-content">
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full bg-white p-4 flex justify-between items-center">
             <span class="fw-bold font-bold text-primary">
-                <h2>Transactions</h2>
+                <h2>Collections</h2>
             </span>
             <span onclick="closeModal('transactionList')" class="rounded-full bg-danger text-white p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">

@@ -1,6 +1,6 @@
     <div id="revenueStreams" class="outer-closer">
         <div class="modal-content">
-            <div class="w-full flex justify-between items-center">
+            <div class="w-full bg-white p-4 flex justify-between items-center">
                 <span class="fw-bold font-bold text-primary">
                     <h2>Available Revenue Streams</h2>
                 </span>

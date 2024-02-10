@@ -230,7 +230,7 @@
                   </clipPath>
                 </defs>
               </svg>
-              Transactions
+              Collections
             </a>
           </li>
           @endcan

@@ -26,19 +26,18 @@ class RevenueStreamSeeder extends Seeder
             'stream_id' => $str->id,
         ]);
 
-        $str1 = Stream::create([
-            'code'=> 'CM',
-            'type'=> 'market',
-            'name' => 'Zesco Market',
-            'description' => 'Market Fees',
-            'icon' => 'healthicons:market-stall'
+        $str0 = Stream::create([
+            'name' => 'Chiyanga Market',
+            'code'=> 'CGT',
+            'type'=> 'toilet',
+            'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
-            'stream_id' => $str1->id,
+            'stream_id' => $str0->id,
         ]);
 
         $str2 = Stream::create([
-            'code'=> 'ZM',
+            'code'=> 'NM',
             'type'=> 'market',
             'name' => 'Nyondo Market',
             'description' => 'Market Fees',
@@ -59,11 +58,23 @@ class RevenueStreamSeeder extends Seeder
             'stream_id' => $str3->id,
         ]);
 
+        $str1 = Stream::create([
+            'code'=> 'ZM',
+            'type'=> 'market',
+            'name' => 'Zesco Market',
+            'description' => 'Market Fees',
+            'icon' => 'healthicons:market-stall'
+        ]);
+        StreamDetail::create([
+            'stream_id' => $str1->id,
+        ]);
+
         // Toilets
         $toi = Stream::create([
-            'name' => 'Main Market T',
+            'name' => 'Main Market Toilet',
             'code'=> 'MMT',
             'type'=> 'toilet',
+            'description' => 'Toilet Fees',
             'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
@@ -71,9 +82,10 @@ class RevenueStreamSeeder extends Seeder
         ]);
 
         $toi1 = Stream::create([
-            'name' => 'Bus Station',
+            'name' => 'Bus Station Toilet',
             'code'=> 'BST',
             'type'=> 'toilet',
+            'description' => 'Toilet Fees',
             'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
@@ -81,9 +93,10 @@ class RevenueStreamSeeder extends Seeder
         ]);
 
         $toi2 = Stream::create([
-            'name' => 'Wembley',
+            'name' => 'Wembley Toilet',
             'code'=> 'WBT',
             'type'=> 'toilet',
+            'description' => 'Toilet Fees',
             'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
@@ -91,9 +104,10 @@ class RevenueStreamSeeder extends Seeder
         ]);
 
         $toi3 = Stream::create([
-            'name' => 'Chiyanga',
-            'code'=> 'CGT',
+            'name' => 'Chiyanga Toilet',
+            'code'=> 'WBT',
             'type'=> 'toilet',
+            'description' => 'Toilet Fees',
             'icon' => 'fa-solid:restroom'
         ]);
         StreamDetail::create([
@@ -103,14 +117,14 @@ class RevenueStreamSeeder extends Seeder
         // Customs
         $customs = Stream::create([
             'code'=> 'CML',
-            'type'=> 'vehicle',
+            'type'=> 'customs',
             'icon' => 'fa-solid:car-side',
             'amount' => 50,
             'name' => 'Cars',
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs->id,
-            'description' => 'Van/Light Truck'
         ]);
 
         $customs1 = Stream::create([
@@ -118,11 +132,11 @@ class RevenueStreamSeeder extends Seeder
             'type'=> 'customs',
             'name' => 'Van/Light Truck',
             'icon' => 'fa-solid:truck-moving',
-            'amount' => 70
+            'amount' => 70,
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs1->id,
-            'description' => 'Van/Light Truck',
         ]);
 
         $customs2 = Stream::create([
@@ -130,11 +144,11 @@ class RevenueStreamSeeder extends Seeder
             'type'=> 'customs',
             'name' => 'Rosa Bus',
             'amount' => 100,
-            'icon' => 'fluent-emoji-high-contrast:bus'
+            'icon' => 'fluent-emoji-high-contrast:bus',
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs2->id,
-            'description' => 'Rosa Bus'
         ]);
 
         $customs3 = Stream::create([
@@ -142,11 +156,11 @@ class RevenueStreamSeeder extends Seeder
             'type'=> 'vehicle',
             'icon' => 'fontisto:truck',
             'amount' => 120,
-            'name' => 'Truck/Small Water Bowser'
+            'name' => 'Truck/Small Water Bowser',
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs3->id,
-            'description' => 'Truck/Small Water Bowser'
         ]);
 
         $customs4 = Stream::create([
@@ -154,11 +168,11 @@ class RevenueStreamSeeder extends Seeder
             'type'=> 'customs',
             'amount' => 150,
             'name' => 'Tanker',
-            'icon' => 'mdi:tanker-truck'
+            'icon' => 'mdi:tanker-truck',
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs4->id,
-            'description' => 'Tanker',
         ]);
 
         $customs5 = Stream::create([
@@ -166,32 +180,34 @@ class RevenueStreamSeeder extends Seeder
             'type'=> 'customs',
             'amount' => 250,
             'name' => 'Container',
-            'icon' => 'mdi:train-car-container'
+            'icon' => 'mdi:train-car-container',
+            'description' => 'Customs Fees'
         ]);
         StreamDetail::create([
             'stream_id' => $customs5->id,
-            'description' => 'Container'
         ]);
 
         // Sand
         $sand = Stream::create([
             'name' => 'Sand Levy',
             'code'=> 'SND',
-            'type'=> 'sand'
+            'type'=> 'sand',
+            'description' => 'Sand Fees',
+            'icon'=>'mdi:timer-sand-complete'
         ]);
         StreamDetail::create([
             'stream_id' => $sand->id,
-            'description' => 'Sand Levy',
         ]);
 
         $sand1 = Stream::create([
             'name' => 'Charcoal Levy',
             'code'=> 'CHL',
-            'type'=> 'charcoal'
+            'type'=> 'charcoal',
+            'description' => 'Charcoal Fees',
+            'icon'=>'mdi:charcoal-outline'
         ]);
         StreamDetail::create([
             'stream_id' => $sand1->id,
-            'description' => 'Charcoal Levy',
         ]);
     }
 }

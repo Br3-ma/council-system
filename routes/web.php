@@ -52,9 +52,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/report-generator', ReportGenerator::class)->name('generator');
 
-
+    
     // Controllers
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
+    Route::get('/delete-staff/{id}', [UserController::class, 'destroy'])->name('delete-staff');
     Route::post('/create-role', [UserRoleController::class, 'store'])->name('create-role');
     Route::post('/bulk-upload', [TransactionController::class, 'bulk_upload'])->name('bulk-upload');
     

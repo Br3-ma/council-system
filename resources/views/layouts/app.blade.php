@@ -44,11 +44,10 @@
     }
 
     .modal-content {
-        background-color: #fff;
-        padding: 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         max-width: 1000px;
+        height: 80%;
         margin: 0 auto;
         text-align: center;
         position: relative;
