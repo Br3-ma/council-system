@@ -8,9 +8,7 @@
             @include('livewire.partials.dashboard.collection-trend2-chart')
             @include('livewire.partials.dashboard.total-collection-stream-chart')
             @include('livewire.partials.dashboard.total-collections-districts-chart')
-            {{-- @include('livewire.partials.dashboard.total-collections-chart-breakdown') --}}
-            {{-- @include('livewire.partials.dashboard.collections-streams-chart') --}}
-            {{-- @include('livewire.partials.dashboard.recent-transactions') --}}
+            @include('livewire.partials.dashboard.total-collections-districts2-chart')
         </div>
     </div>
 

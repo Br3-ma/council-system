@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashbaordController;
+use App\Http\Controllers\RevenueStreamController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserRoleController;
@@ -38,6 +39,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/staff-members', StaffMember::class)->name('staff-members');
     
     Route::get('/revenue-streams', RevenueStreams::class)->name('streams');
+    Route::resource('streams', RevenueStreamController::class);
+
+
     Route::get('/tasks', StaffMember::class)->name('tasks');
     Route::get('/user-roles', UserRoles::class)->name('roles');
 

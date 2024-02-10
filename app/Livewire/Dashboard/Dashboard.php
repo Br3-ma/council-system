@@ -129,15 +129,16 @@ class Dashboard extends Component
     // work on the next
     public function collections_streams_pie()
     {
-    
         $streams = Stream::with('transacts')->get();
-        
     
         foreach ($streams as $data) {
             $totalAmount = $data->transacts->sum('total_amount');
             $this->series1[] = $totalAmount;
             $this->labels1[] = $data->name;
         }
+
+        // dd($this->series1);
+
     }
     
 }

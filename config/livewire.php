@@ -38,9 +38,8 @@ return [
     |
     */
 
-    'layout' => 'layouts.app',
+    'layout' => 'components.layouts.app',
 
-    'app_url' => 'http://localhost/council/dashboard',
     /*
     |---------------------------------------------------------------------------
     | Lazy Loading Placeholder
@@ -50,13 +49,7 @@ return [
     | you can define the default placeholder view for all components below.
     |
     */
-    
-
-    'asset_url' => '/council/dashboard/public/vendor/livewire/livewire.js',
-
-
-    'full_page_component_mode' => true,
-
+    'asset_url' => 'http://localhost/council/dashboard/public/vendor/livewire/livewire.js',
     // 'lazy_placeholder' => null,
 
     /*
@@ -120,7 +113,7 @@ return [
     |
     */
 
-    'inject_assets' => false,
+    'inject_assets' => true,
 
     /*
     |---------------------------------------------------------------------------

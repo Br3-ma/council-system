@@ -78,10 +78,7 @@
                   <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Machine ID
                   </th>
-              
-                  <th class="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
-                    Status
-                  </th>
+                  
                   <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
                     Receipt No.
                   </th>
@@ -115,12 +112,6 @@
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <p class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
                       {{$t->machine_id ?? $t->terminal_id}}
-                    </p>
-                  </td>
-          
-                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success':'bg-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                      {{ $t->payment_status == 1 ? 'Success':'Failed' }}
                     </p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
