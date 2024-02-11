@@ -32,4 +32,19 @@ class UserRoleController extends Controller
         }
     }
 
+    public function destroy($id)
+    {
+        $role = Role::where('id', $id)->first();
+
+        if ($role) {
+            $role->delete();
+    
+            return redirect()->route('roles')
+                ->with('success', 'Role deleted successfully!');
+        } else {
+            return redirect()->route('roles')
+                ->with('error', 'Role not found.');
+        }
+    }
+
 }
