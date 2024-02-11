@@ -23,9 +23,11 @@ class RevenueStreams extends Component
                 'icon'=>$this->icon,
                 'amount'=>$this->amount,
                 'description'=>$this->description,
+                'user_id'=> auth()->user()->id,
             ]);
             session()->flash('success', 'Created Successfully');
             return redirect()->route('streams');
+            
         } catch (\Throwable $th) {
             session()->flash('error', 'Oops something failed.');
             return redirect()->route('streams');

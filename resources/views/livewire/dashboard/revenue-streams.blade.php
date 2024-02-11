@@ -22,13 +22,27 @@
 
         <!-- ====== Table Section Start -->
         <div class="flex flex-col gap-10">
-            <div class="w-full">
-            @can('add revenue streams')
-            <button onclick="openModal('newStreamModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
-                Add New
-            </button>
-            @endcan
+            <div class="w-full flex items-center justify-between">
+                @can('add revenue streams')
+                <button onclick="openModal('newStreamModal')" class="mt-2 flex items-center gap-2 rounded bg-primary py-3 px-4.5 font-medium text-white hover:bg-opacity-80">
+                    Add New
+                </button>
+                @endcan
+                
+                @can('export revenue streams')
+                <a href="{{ route('export-streams') }}" class="mt-8 flex items-center gap-2 rounded bg-secondary py-2 px-3 font-medium text-white hover:bg-opacity-80">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+                            <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
+                            <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+                            <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
+                        </svg>
+                    </span>
+                    Export 
+                </a> 
+                @endcan
             </div>
+            
             
             @include('livewire.alerts.alerts')
             <div class="rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
@@ -42,6 +56,9 @@
                                 <th class="font-bold fw-bold min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
                                     Total Transctions
                                 </th>
+                                <th class="font-bold fw-bold min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
+                                    Added By
+                                </th>
                                 <th class="font-bold fw-bold py-4 px-4 font-medium text-black dark:text-white">
                                     Actions
                                 </th>
@@ -53,10 +70,16 @@
                                 <h5 class="font-bold fw-bold text-black dark:text-white"> {{ $s->name }} </h5>
                                 
                             </td>
-
                             <td class="border-b border-[#eee] py-5 px-2 pl-9 dark:border-strokedark xl:pl-11">
                                 <h5 class="font-bold fw-bold text-black dark:text-white">K{{ $s->transacts->sum('total_amount') }}</h5>
                                 <p class="text-sm"> {{ $s->transacts->count() }} Transaction(s)</p>
+                            </td>
+                            <td class="border-b border-[#eee] py-5 px-2 pl-9 dark:border-strokedark xl:pl-11">
+                                @if ($s->user !== null)
+                                <p class="text-sm"> {{ $s->user->fname.' '.$s->user->lname }}</p>
+                                @else
+                                System
+                                @endif
                             </td>
 
                             <td class="border-b border-[#eee] py-5 px-2 dark:border-strokedark">

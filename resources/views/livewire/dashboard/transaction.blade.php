@@ -68,30 +68,34 @@
         </form>
         @endcan
 
-{{-- 
-        <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center gap-2 rounded bg-info py-2 px-3 font-medium text-white hover:bg-opacity-80">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
-              <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
-              <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
-              <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
-            </svg>
-          </span>
-          Export 
-        </button> --}}
+        
+        <div class=" flex items-center justify-content-center gap-2 w-1/2">
+          @can('export transactions')
+          <a href="{{ route('export-transactions') }}" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-secondary py-2 px-3 font-medium text-white hover:bg-opacity-80">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
+                <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+                <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
+              </svg>
+            </span>
+            Export 
+          </a> 
+          @endcan
 
-        @can('generate report')
-        <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-primary py-2 px-3 font-medium text-white hover:bg-opacity-80">
-          <span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
-              <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
-              <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
-              <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
-            </svg>
-          </span>
-          Generate Report
-        </button>
-        @endcan
+          @can('generate report')
+          <button onclick="openModal('reportSearchModal')" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-primary py-2 px-3 font-medium text-white hover:bg-opacity-80">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard2-data" viewBox="0 0 16 16">
+                <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5z"/>
+                <path d="M3 2.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 0 0-1h-.5A1.5 1.5 0 0 0 2 2.5v12A1.5 1.5 0 0 0 3.5 16h9a1.5 1.5 0 0 0 1.5-1.5v-12A1.5 1.5 0 0 0 12.5 1H12a.5.5 0 0 0 0 1h.5a.5.5 0 0 1 .5.5v12a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5z"/>
+                <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
+              </svg>
+            </span>
+            Generate Report
+          </button>
+          @endcan
+        </div>
       </div>
     </div>
     
@@ -106,7 +110,7 @@
                     Date
                   </th>
                   <th class="min-w-[90px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11"> 
-                    Transaction ID
+                    TID
                   </th>
                   <th class="min-w-[100px] py-4 px-4 font-medium text-black dark:text-white">
                     Amount
@@ -118,8 +122,11 @@
                     Machine ID
                   </th>
                   
-                  <th class="min-w-[120px] py-4 px-4 text-sm font-medium text-black dark:text-white">
+                  <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                     Receipt No.
+                  </th>                  
+                  <th class="min-w-[80px] py-4 px-4 font-medium text-black dark:text-white">
+                    By
                   </th>
                   <th class="py-4 px-4 font-medium text-black dark:text-white">
                     Actions
@@ -156,6 +163,11 @@
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <a href="#" class="inline-flex rounded-full {{ $t->payment_status == 1 ? 'bg-success text-success':'bg-danger text-danger' }}  bg-opacity-10 py-1 px-3 text-sm font-medium ">
                       {{ $t->receipt != null ? $t->receipt->receipt_number : '--' }}
+                    </a>
+                  </td>
+                  <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <a href="#" class="inline-flex rounded-full bg-opacity-10 py-1 px-3 text-sm font-medium ">
+                      {{ $t->created_by }}
                     </a>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">

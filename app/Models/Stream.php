@@ -18,7 +18,18 @@ class Stream extends Model
         'code',
         'icon',
         'amount',
+        'user_id',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+    
+        // Include stream and district relationships when the model is called
+        static::retrieved(function ($user) {
+            $user->load('user');
+        });
+    }
 
     public function user(){
         return $this->belongsTo(User::class);

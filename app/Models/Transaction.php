@@ -29,7 +29,8 @@ class Transaction extends Model
         'payment_status',
         'is_sync',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'created_by',
     ];
 
     protected static function boot()

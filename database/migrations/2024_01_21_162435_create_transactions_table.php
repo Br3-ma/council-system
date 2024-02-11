@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('stream_id')->nullable();
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('employee_id')->nullable();
+            $table->string('created_by')->nullable();
             $table->string('terminal_id')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();
             $table->dateTime('transaction_date')->nullable();

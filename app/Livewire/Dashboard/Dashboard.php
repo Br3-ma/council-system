@@ -78,17 +78,14 @@ class Dashboard extends Component
     public function total_collected_today()
     {
         $today = Carbon::today();
-        // dd($today->toDateTimeString());
         $totalToday = Transaction::where('created_at', '<=', $today->toDateTimeString())->sum('total_amount');
-        
         return number_format($totalToday, 2);
     }
 
     public function count_collected_today()
     {
         $today = Carbon::today();
-        $totalToday = Transaction::whereDate('created_at', $today);
-        return $totalToday->count();
+        return Transaction::where('created_at', '<=', $today->toDateTimeString())->count();
     }
 
     

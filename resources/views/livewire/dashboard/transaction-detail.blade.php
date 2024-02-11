@@ -68,11 +68,9 @@
                             {{ $collection->stream->type }}
                         </a>
                         <p class="flex text-sm font-medium">
-                            <span class="mr-5"> Color: White </span>
-                            <span class="mr-5"> Size: Medium </span>
-                            {{-- @dd(($collection->customs)) --}}
+                            <span class="mr-5"> Code: {{ $collection->stream->code }} </span>
+                            <span class="mr-5"> Vehicle: {{ $collection->stream->name }} </span>
                             <span class="mr-5"> Registration Number: {{ $collection->customs->first()->vehicleRegNumber  }} </span>
-                            
                         </p>
                     </div>
                     <div class="flex items-center md:justify-end">
@@ -90,7 +88,6 @@
                         </a>
                         <p class=" text-sm font-medium">
                             <span class="mr-5"> Code: {{ $collection->stream->code }} </span>
-                            {{-- @dd(($collection->customs)) --}}
                             <span class="mr-5"> {{ $collection->stream->description }}</span>
                             
                         </p>

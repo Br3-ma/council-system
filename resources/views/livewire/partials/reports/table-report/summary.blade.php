@@ -5,6 +5,9 @@
             <thead>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
                     <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
+                        Revenue Stream ID
+                    </th>
+                    <th class="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                         Revenue Stream
                     </th>
                     <th class="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
@@ -21,6 +24,11 @@
                 @endphp
                 @forelse ($transactions as $t)
                     <tr>
+                        <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                            <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
+                                {{ $t->id }}
+                            </p>
+                        </td>
                         <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                             <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
                                 {{ $t->name }}
@@ -47,10 +55,12 @@
             <tfoot>
                 <tr>
                     <td class="font-bold fs-2">GRAND TOTAL</td>
+                    <td class="font-bold fs-2"></td>
                     <td class="font-bold fs-2">K {{ $grandTotal }}</td>
                     <td class="font-bold fs-2">{{ $transactions->count() }}</td>
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>

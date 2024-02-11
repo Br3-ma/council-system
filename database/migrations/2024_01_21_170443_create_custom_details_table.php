@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('transaction_id')->nullable();
             $table->string('type')->nullable();
             $table->string('vehicleRegNumber')->nullable();
-            $table->string('entity')->nullable();
+            $table->string('vehiclePlate')->nullable();
+            $table->string('name')->nullable();
             $table->integer('status')->default(1);
             $table->integer('is_deleted')->default(0);            
             $table->timestamps();

@@ -28,6 +28,8 @@ class UserRoleSeeder extends Seeder
          ->syncRoles('admin');
          Permission::create(['name' => 'edit revenue streams','group'=>'dashboard','permission'=>'edit revenue streams'])
          ->syncRoles('admin');
+         Permission::create(['name' => 'export revenue streams','group'=>'dashboard','permission'=>'export revenue streams'])
+         ->syncRoles('admin');
 
         //  Districts
         // Permission::create(['name' => 'view districts','group'=>'districts','permission'=>'view districts'])
@@ -51,6 +53,8 @@ class UserRoleSeeder extends Seeder
          Permission::create(['name' => 'generate report','group'=>'transactions','permission'=>'generate report'])
          ->syncRoles('admin');
          Permission::create(['name' => 'import transactions','group'=>'transactions','permission'=>'import transactions'])
+         ->syncRoles('admin');
+         Permission::create(['name' => 'export transactions','group'=>'transactions','permission'=>'export transactions'])
          ->syncRoles('admin');
 
          // User Roles

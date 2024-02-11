@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\CustomDetail;
 use App\Models\Reciept;
+use App\Models\Stream;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Response;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class TransactionController extends Controller
 {
     /**
@@ -42,18 +47,19 @@ class TransactionController extends Controller
                         try {
                             foreach ($data as $row) {
                                 if ($row['A'] !== null || $row['E'] !== null || $row['J'] !== null) {
+                                    // dd(Carbon::parse($row['D']));
                                     $sd = Transaction::create([
                                         'stream_id' => $row['A'],
                                         'terminal_id' => $row['B'],
                                         'district_id' => $row['C'],
-                                        'transaction_date' => $row['D'],
+                                        'transaction_date' => Carbon::parse($row['D']),
                                         'total_amount' => $row['E'],
                                         'payment_method' => $row['F'],
                                         'status' => 1,
                                         'machine_id' => $row['H'],
                                         'is_sync' => 1, //$row['I']
-                                        'created_at' => $row['J'],
-                                        'updated_at' => $row['K'],
+                                        'created_at' => Carbon::parse($row['J']),
+                                        'updated_at' => Carbon::parse($row['K']),
                                     ]);
                                 }
                             }
@@ -91,21 +97,22 @@ class TransactionController extends Controller
             $data = $request->toArray();
 
             $t = Transaction::create([
-                'stream_id' => $data['revenueStreamID'],  //Wait for API I will give you for stream added by admin
-                'customer_id' => null, //nullable for now
-                'employee_id' => null, //nullable for now
-                'terminal_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
-                'machine_id' => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
-                'district_id' => $data['locationID'],  //Wait for API I will give you for locations added by admin
-                'total_amount' => $data['feeAmount'],
-                'discount_amount' => 0, //nullable
-                'tax_amount' => 0, //nullable
-                'net_amount' => $data['feeAmount'], //nullable
-                'payment_method' => $data['paymentType'], //cash etc
-                'payment_status' => 1,
-                'transaction_date' => Carbon::parse($data['timestamp'])->toDateTimeString(),
-                'created_at' => Carbon::parse($data['timestamp']),
-                'updated_at' => Carbon::parse($data['timestamp']),
+                'stream_id'         => $data['revenueStreamID'],  //Wait for API I will give you for stream added by admin
+                'customer_id'       => null, //nullable for now
+                'created_by'        => $data['staffName'],
+                'employee_id'       => null, //nullable for now
+                'terminal_id'       => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
+                'machine_id'        => $data['machineID'], //nullable or Wait for API I will give you for locations added by admin
+                'district_id'       => $data['locationID'],  //Wait for API I will give you for locations added by admin
+                'total_amount'      => $data['feeAmount'],
+                'discount_amount'   => 0, //nullable
+                'tax_amount'        => 0, //nullable
+                'net_amount'        => $data['feeAmount'], //nullable
+                'payment_method'    => $data['paymentType'], //cash etc
+                'payment_status'    => 1,
+                'transaction_date'  => Carbon::parse($data['timestamp'])->toDateTimeString(),
+                'created_at'        => Carbon::parse($data['timestamp']),
+                'updated_at'        => Carbon::parse($data['timestamp']),
             ]);
             
             // A field to specific if a transaction contains customs data (make it true or false)
@@ -161,4 +168,318 @@ class TransactionController extends Controller
     {
         //
     }
+
+    
+    public function summary_table_data()
+    {
+        $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+        $toDate = Carbon::parse($_GET['to'])->endOfDay();
+    
+        return Stream::with(['transacts' => function ($query) use ($fromDate, $toDate) {
+            $query->whereBetween('created_at', [$fromDate, $toDate]);
+        }])
+        ->get();
+    }
+    
+    public function collection_table_data()
+    {
+        $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+        $toDate = Carbon::parse($_GET['to'])->endOfDay();
+    
+        return Stream::leftJoin('transactions', 'streams.id', '=', 'transactions.stream_id')
+        ->whereBetween('transactions.created_at', [$fromDate, $toDate])
+        ->groupBy('streams.type')
+        ->select('streams.*', DB::raw('SUM(transactions.total_amount) as total_amount'))
+        ->get();
+    }
+    public function transaction_table_data()
+    {
+        $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+        $toDate = Carbon::parse($_GET['to'])->endOfDay();
+    
+        // Fetch transactions within the date range
+        return Transaction::whereBetween('created_at', [$fromDate, $toDate])->get();
+    
+    }
+        
+    public function export_report(){
+
+        $report_type = $_GET['report_type'];
+        // Retrieve data from the database or any other source as per your requirement
+        switch ($report_type) {
+            case 'summary':
+                $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+                $toDate = Carbon::parse($_GET['to'])->endOfDay();
+            
+                $transactions = Stream::with(['transacts' => function ($query) use ($fromDate, $toDate) {
+                    $query->whereBetween('created_at', [$fromDate, $toDate]);
+                }])->get();
+                
+                
+                $headers = [
+                    'Revenue Stream ID','Revenue Stream','Total Amount', 'Number of Transactions'
+                ];
+        
+            
+                // Create a new Spreadsheet instance
+                $spreadsheet = new Spreadsheet();
+                $sheet = $spreadsheet->getActiveSheet();
+            
+                // Add headers to the sheet
+                $sheet->fromArray([$headers], NULL, 'A1');
+            
+                // Add data to the sheet
+                $data = [];
+                
+                $grandTotal = 0;
+                foreach ($transactions as $transaction) {
+                    $totalAmount = $transaction->transacts->sum('total_amount');
+                    $grandTotal += $totalAmount;
+        
+                    $data[] = [
+                        $transaction->id,
+                        $transaction->name,
+                        $totalAmount,
+                        $transaction->transacts->count(),
+                    ];
+                }
+        
+                // dd($data);
+                $sheet->fromArray($data, NULL, 'A2');
+            
+                // Save the Excel file
+                $fileName = 'Summary Report.xlsx';
+                $writer = new Xlsx($spreadsheet);
+            
+                // Stream the file to the browser
+                ob_start();
+                $writer->save('php://output');
+                $content = ob_get_clean();
+            
+                return response($content)
+                    ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                    ->header('Content-Disposition', 'attachment;filename="' . $fileName . '"')
+                    ->header('Cache-Control', 'max-age=0');
+            break;
+
+
+
+            case 'collection':
+                $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+                $toDate = Carbon::parse($_GET['to'])->endOfDay();
+            
+                $transactions = Stream::with(['transacts' => function ($query) use ($fromDate, $toDate) {
+                    $query->whereBetween('created_at', [$fromDate, $toDate]);
+                }])->get();
+                
+                
+                $headers = [
+                    'Revenue Stream ID','Revenue Stream','Total Amount', 'Number of Transactions'
+                ];
+        
+            
+                // Create a new Spreadsheet instance
+                $spreadsheet = new Spreadsheet();
+                $sheet = $spreadsheet->getActiveSheet();
+            
+                // Add headers to the sheet
+                $sheet->fromArray([$headers], NULL, 'A1');
+            
+                // Add data to the sheet
+                $data = [];
+                
+                $grandTotal = 0;
+                foreach ($transactions as $transaction) {
+                    $totalAmount = $transaction->transacts->sum('total_amount');
+                    $grandTotal += $totalAmount;
+        
+                    $data[] = [
+                        $transaction->id,
+                        $transaction->name,
+                        $totalAmount,
+                        $transaction->transacts->count(),
+                    ];
+                }
+        
+                // dd($data);
+                $sheet->fromArray($data, NULL, 'A2');
+            
+                // Save the Excel file
+                $fileName = 'Collections Report.xlsx';
+                $writer = new Xlsx($spreadsheet);
+            
+                // Stream the file to the browser
+                ob_start();
+                $writer->save('php://output');
+                $content = ob_get_clean();
+            
+                return response($content)
+                    ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                    ->header('Content-Disposition', 'attachment;filename="' . $fileName . '"')
+                    ->header('Cache-Control', 'max-age=0');
+            break;
+
+
+
+            case 'transaction':        
+                $fromDate = Carbon::parse($_GET['from'])->startOfDay();
+                $toDate = Carbon::parse($_GET['to'])->endOfDay();
+
+                // Fetch transactions within the date range
+                $transactions = Transaction::whereBetween('created_at', [$fromDate, $toDate])->get();
+                    $headers = [
+                        'Transaction ID','Revenue Stream', 'Transaction Date', 'Total Amount',
+                        'Payment Method', 'Status', 'Machine ID', 'Is Sync', 'Created At', 'Updated At'
+                    ];
+
+
+                    // Create a new Spreadsheet instance
+                    $spreadsheet = new Spreadsheet();
+                    $sheet = $spreadsheet->getActiveSheet();
+
+                    // Add headers to the sheet
+                    $sheet->fromArray([$headers], NULL, 'A1');
+
+                    // Add data to the sheet
+                    $data = [];
+                    foreach ($transactions as $transaction) {
+                        $data[] = [
+                            $transaction->id,
+                            $transaction->stream->name,
+                            $transaction->transaction_date,
+                            $transaction->total_amount,
+                            $transaction->payment_method,
+                            $transaction->status,
+                            $transaction->machine_id,
+                            $transaction->is_sync,
+                            $transaction->created_at,
+                            $transaction->updated_at,
+                        ];
+                    }
+                    $sheet->fromArray($data, NULL, 'A2');
+
+                    // Save the Excel file
+                    $fileName = 'Transaction Report Export.xlsx';
+                    $writer = new Xlsx($spreadsheet);
+
+                    // Stream the file to the browser
+                    ob_start();
+                    $writer->save('php://output');
+                    $content = ob_get_clean();
+
+                    return response($content)
+                        ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+                        ->header('Content-Disposition', 'attachment;filename="' . $fileName . '"')
+                        ->header('Cache-Control', 'max-age=0');
+            break;
+            default:
+               return redirect()->route('reports');
+            break;
+        }
+    }
+        
+    public function export_transactions(){
+        $transactions = Transaction::get();
+    
+        // Define custom headers
+        $headers = [
+            'Transaction ID','Revenue Stream', 'Transaction Date', 'Total Amount',
+            'Payment Method', 'Status', 'Machine ID', 'Is Sync', 'Created At', 'Updated At'
+        ];
+
+    
+        // Create a new Spreadsheet instance
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        // Add headers to the sheet
+        $sheet->fromArray([$headers], NULL, 'A1');
+    
+        // Add data to the sheet
+        $data = [];
+        foreach ($transactions as $transaction) {
+            $data[] = [
+                $transaction->id,
+                $transaction->stream->name,
+                $transaction->transaction_date,
+                $transaction->total_amount,
+                $transaction->payment_method,
+                $transaction->status,
+                $transaction->machine_id,
+                $transaction->is_sync,
+                $transaction->created_at,
+                $transaction->updated_at,
+            ];
+        }
+        $sheet->fromArray($data, NULL, 'A2');
+    
+        // Save the Excel file
+        $fileName = 'All Transactions Export.xlsx';
+        $writer = new Xlsx($spreadsheet);
+    
+        // Stream the file to the browser
+        ob_start();
+        $writer->save('php://output');
+        $content = ob_get_clean();
+    
+        return response($content)
+            ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            ->header('Content-Disposition', 'attachment;filename="' . $fileName . '"')
+            ->header('Cache-Control', 'max-age=0');
+    }
+
+
+
+
+
+    public function collection_export($transactions){
+        // Define custom headers
+        $headers = [
+            'Transaction ID','Revenue Stream', 'Transaction Date', 'Total Amount',
+            'Payment Method', 'Status', 'Machine ID', 'Is Sync', 'Created At', 'Updated At'
+        ];
+
+    
+        // Create a new Spreadsheet instance
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+    
+        // Add headers to the sheet
+        $sheet->fromArray([$headers], NULL, 'A1');
+    
+        // Add data to the sheet
+        $data = [];
+        foreach ($transactions as $transaction) {
+            $data[] = [
+                $transaction->id,
+                $transaction->stream->name,
+                $transaction->transaction_date,
+                $transaction->total_amount,
+                $transaction->payment_method,
+                $transaction->status,
+                $transaction->machine_id,
+                $transaction->is_sync,
+                $transaction->created_at,
+                $transaction->updated_at,
+            ];
+        }
+        $sheet->fromArray($data, NULL, 'A2');
+    
+        // Save the Excel file
+        $fileName = 'Collections Report.xlsx';
+        $writer = new Xlsx($spreadsheet);
+    
+        // Stream the file to the browser
+        ob_start();
+        $writer->save('php://output');
+        $content = ob_get_clean();
+    
+        return response($content)
+            ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+            ->header('Content-Disposition', 'attachment;filename="' . $fileName . '"')
+            ->header('Cache-Control', 'max-age=0');
+    }
+
+
+        
 }

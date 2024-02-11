@@ -230,4 +230,8 @@ class ReportGenerator extends Component
         }
     }
 
+    public function export(){
+        dd('here');
+    }
+
 }

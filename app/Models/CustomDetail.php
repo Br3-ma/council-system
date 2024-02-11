@@ -12,7 +12,7 @@ class CustomDetail extends Model
         'transaction_id',
         'type',
         'vehicleRegNumber',
-        'entity',
+        'name',
         'status',
         'is_deleted'
     ];

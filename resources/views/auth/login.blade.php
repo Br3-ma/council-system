@@ -77,7 +77,9 @@
                     <p class="font-medium text-white 2xl:px-20">
                       For administration use only
                     </p>
-
+                    <p class="mt-2 font-bold text-white 2xl:px-20">
+                      Nakonde City Council Management System
+                    </p>
                     <span class="mt-15 inline-block">
                       <img width="50" src="fav.webp"
                         alt="illustration" />
@@ -85,25 +87,23 @@
                   </div>
                 </div>
 
-                <div class="w-full p-20 bg-white text-primary xl:w-1/2 ">
-                  <div class="w-full p-10 sm:p-12.5 xl:p-17.5">
-                    <h2 style="color: black" class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+                <div style="background-color: #ffffff76" class="w-full rounded-lg p-6 text-primary xl:w-1/2 ">
+                  <div class="w-full p-8 sm:p-12.5 xl:p-17.5">
+                    <h2 style="color: rgb(21, 65, 88)" class="mb-10 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                       Sign In
                     </h2>
-
-                    <x-validation-errors class="mb-4" />
-
+                    <x-validation-errors class="mb-4 text-danger" />
                     @if (session('status'))
-                        <div class="mb-4 font-medium text-sm text-green-600">
+                        <div class="mb-4 font-medium text-sm text-green-600 alert alert-danger">
                             {{ session('status') }}
                         </div>
                     @endif
                     <form method="POST" action="{{ route('login') }}">
                       @csrf
                       <div class="mb-4">
-                        <label  style="color: black"
+                        {{-- <label  style="color: black"
                           class="mb-2.5 block font-medium text-black dark:text-white"
-                          >User</label>
+                          >User</label> --}}
                         <div class="relative">
                           <input
                             type="email"
@@ -132,9 +132,9 @@
                       </div>
 
                       <div class="mb-6">
-                      <label  style="color: black"
+                      {{-- <label  style="color: black"
                           class="mb-2.5 block font-medium text-black dark:text-white"
-                          >Password</label>
+                          >Password</label> --}}
                         <div class="relative">
                           <input
                             type="password" name="password" required autocomplete="password"
@@ -169,7 +169,7 @@
                         <p wire:loading>Please waiting...</p>
                         <input wire:loading.remove
                           type="submit"
-                          value="Sign In"
+                          value="Login"
                           class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90"
                         />
                       </div>
