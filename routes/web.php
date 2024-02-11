@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashbaordController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\RevenueStreamController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
@@ -59,9 +60,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     
     Route::post('/create-role', [UserRoleController::class, 'store'])->name('create-role');
     Route::post('/bulk-upload', [TransactionController::class, 'bulk_upload'])->name('bulk-upload');
+    Route::post('/bulk-receipt-upload', [ReceiptController::class, 'bulk_upload'])->name('bulk-receipt-upload');
     Route::get('/export-streams', [RevenueStreamController::class, 'export_streams'])->name('export-streams');
     Route::get('/export-report', [TransactionController::class, 'export_report'])->name('export-report');
     Route::get('/export-transactions', [TransactionController::class, 'export_transactions'])->name('export-transactions');
+    Route::get('/export-receipts', [ReceiptController::class, 'export_receipts'])->name('export-receipts');
     
     // APIs
     Route::get('/collections_by_streams', [DashbaordController::class, 'collections_by_streams'])->name('area-trend');

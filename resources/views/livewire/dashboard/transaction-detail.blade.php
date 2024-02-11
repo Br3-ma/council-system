@@ -26,12 +26,13 @@
                 From
               </p>
               <h4 class="mb-4 text-2xl font-medium text-black dark:text-white">
-                Nakonde City Council
+                Nakonde Town Council
               </h4>
-              <a href="#" class="block"><span class="font-medium">Email:</span>
-                contact@example.com</a>
-              <span class="mt-2 block"><span class="font-medium">Address:</span> 2972 Westheimer
-                Rd. Santa Ana.</span>
+              <a href="mailto:nakondetowncouncil.ntc@gmail.com" class="block">nakondetowncouncil.ntc@gmail.com</a>
+              <span class="mt-2 block">P.0. Box 430083 Nakonde.</span>
+              <span class="mt-2 block">+260 977 415 186</span>
+              <span class="mt-2 block">+260 967 415 186</span>
+              <span class="mt-2 block">+260 957 700 001</span>
             </div>
             <div>
               <p class="mb-1.5 text-lg font-medium text-black dark:text-white">

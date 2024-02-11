@@ -1,5 +1,10 @@
 
 <main>
+    <style>
+        .d-none{
+            display: none;
+        }
+    </style>
     <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
         <div class="mx-auto max-w-5xl">
             <!-- Breadcrumb Start -->
@@ -267,9 +272,10 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        function closeNewRoleModal() {
-            $('#NewRoleModal').hide();
-        }
+    function closeNewRoleModal() {
+        location.reload();
+    }
     </script>
+    
 </main>
 
