@@ -1,6 +1,6 @@
 <div id="newStreamModal" class="outer-closer">
     <div class="modal-content">
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full flex bg-white p-4 justify-between items-center">
             <span class="fw-bold font-bold text-primary">
                 <h2>New Revenue Stream</h2>
             </span>
@@ -12,7 +12,7 @@
         </div>
         
         
-        <form action="{{ route('streams.store') }}" method="POST" class="w-full rounded-sm mb-2 bg-white p-3 dark:border-strokedark dark:bg-boxdark" style="width: 500px" >
+        <form action="{{ route('create-stream') }}" method="POST" class="w-full rounded-sm mb-2 bg-white p-3 dark:border-strokedark dark:bg-boxdark" style="width: 500px" >
             @csrf
             <div class="w-full text-left">
                 <div class="flex gap-2">

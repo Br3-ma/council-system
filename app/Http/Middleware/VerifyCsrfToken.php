@@ -12,6 +12,8 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
+        'streams',
+        'new-streams',
         'v1/new-transaction',
         'api/v1/new-transaction'
     ];

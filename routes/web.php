@@ -42,6 +42,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     
     Route::get('/revenue-streams', RevenueStreams::class)->name('streams');
     Route::resource('streams', RevenueStreamController::class);
+    Route::post('new-streams', [RevenueStreamController::class, 'store'])->name('create-stream');
 
     Route::get('/tasks', StaffMember::class)->name('tasks');
     Route::get('/user-roles', UserRoles::class)->name('roles');
