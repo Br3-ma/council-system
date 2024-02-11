@@ -116,7 +116,6 @@ class RevenueStreamController extends Controller
             ->with('success', 'Revenue stream deleted successfully');
     }
 
-
     public function export_streams(){
     
         $streams = Stream::with('transacts')->get();

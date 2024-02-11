@@ -42,9 +42,8 @@
                     <div class="flex -space-x-2">
                     </div>
 
-                    <div x-data="{popupOpen: false}">
-                        <button
-                            @click="popupOpen = true"
+                    <div onclick="openModal('NewRoleModal')">
+                        <button 
                             class="flex items-center gap-2 rounded bg-primary py-2 px-4.5 font-medium text-white hover:bg-opacity-80"
                         >
                             <svg
@@ -64,18 +63,16 @@
                         </button>
 
                         <!-- ===== Task Popup Start ===== -->
-                        <div x-show="popupOpen"
-                            x-transition
-                            class="fixed top-0 left-0 z-99999 flex h-screen w-full justify-center overflow-y-scroll bg-black/80 py-5 px-4">
-                            <div @click.outside="popupOpen = false" class="relative m-auto w-full max-w-180 rounded-sm border border-stroke bg-gray p-4 shadow-default dark:border-strokedark dark:bg-meta-4 sm:p-8 xl:p-10">
-                                <button @click="popupOpen = false" class="absolute right-1 top-1 sm:right-5 sm:top-5">
+                        <div id="NewRoleModal" class="fixed top-0 left-0 z-99999 h-screen w-full justify-center overflow-y-scroll bg-black/80 py-5 px-4">
+                            <div style="text-align: left; height:100%" class="modal-content relative m-auto w-full max-w-180 rounded-sm border border-stroke bg-gray p-4 shadow-default dark:border-strokedark dark:bg-meta-4 sm:p-8 xl:p-10">
+                                <button onclick="closeNewRoleModal()" class="absolute right-1 top-1 sm:right-5 sm:top-5">
                                     <svg
-                                            class="fill-current"
-                                            width="20"
-                                            height="20"
-                                            viewBox="0 0 20 20"
-                                            fill="none"
-                                            xmlns="http://www.w3.org/2000/svg"
+                                        class="fill-current"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 20 20"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
                                         >
                                         <path
                                         fill-rule="evenodd"
@@ -221,9 +218,7 @@
                                     Edit
                                     </button> --}}
                                     @if ($role->name !== 'admin')
-                                        <a href="{{ route('delete-role', $role->id) }}"
-                                            class="flex w-full items-center gap-2 rounded-sm py-1.5 px-4 text-left text-sm hover:bg-gray dark:hover:bg-meta-4"
-                                        >
+                                        <a href="{{ route('delete-role', $role->id) }}" class="flex w-full items-center gap-2 rounded-sm py-1.5 px-4 text-left text-sm hover:bg-gray dark:hover:bg-meta-4">
                                         <svg
                                             class="fill-current"
                                             width="16"
@@ -270,5 +265,11 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function closeNewRoleModal() {
+            $('#NewRoleModal').hide();
+        }
+    </script>
 </main>
 

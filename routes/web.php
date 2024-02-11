@@ -8,6 +8,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Livewire\Dashboard\Calendar;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\Districts;
+use App\Livewire\Dashboard\Reciepts;
 use App\Livewire\Dashboard\ReportGenerator;
 use App\Livewire\Dashboard\RevenueStreams;
 use App\Livewire\Dashboard\StaffMember;
@@ -41,17 +42,15 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/revenue-streams', RevenueStreams::class)->name('streams');
     Route::resource('streams', RevenueStreamController::class);
 
-
     Route::get('/tasks', StaffMember::class)->name('tasks');
     Route::get('/user-roles', UserRoles::class)->name('roles');
 
     Route::get('/tasks', Task::class)->name('tasks');
     Route::get('/transactions', Transaction::class)->name('transactions');
+    Route::get('/receipts', Reciepts::class)->name('receipts');
     Route::get('/transaction-details/{id}', TransactionDetail::class)->name('details');
 
-
     Route::get('/report-generator', ReportGenerator::class)->name('generator');
-
     
     // Controllers
     Route::post('/create-user', [UserController::class, 'store'])->name('create-user');
