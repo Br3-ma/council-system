@@ -134,9 +134,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom01" name="fname"  placeholder="Enter a firstname.." required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter a name.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -145,9 +145,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom01" name="lname"  placeholder="Enter a surname.." required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter a surname.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -156,9 +156,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" name="email" id="validationCustom02"  placeholder="Your valid email.." required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter an Email.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -170,9 +170,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" disabled class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom03" placeholder="nakonde@123@" required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    {{-- <div class="invalid-feedback">
                                                                                         Please enter a password.
-                                                                                    </div>
+                                                                                    </div> --}}
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -186,9 +186,9 @@
                                                                                         <option value="Female">Female</option>
                                                                                         <option value="Other">Other</option>
                                                                                     </select>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please select a one.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -197,9 +197,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" name="basic_pay" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom06" placeholder="21.60" required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter a Basic Pay.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -211,9 +211,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" name="nrc" id="validationCustom07"  placeholder="999999/99/9" required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter an NRC.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -222,9 +222,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" name="phone" id="validationCustom08" placeholder="097-999-8888" required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter a phone no.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3 row">
@@ -233,9 +233,9 @@
                                                                                 </label>
                                                                                 <div class="col-lg-6">
                                                                                     <input type="text" name="occupation" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom09"  placeholder="Ex. Business Administrator" required>
-                                                                                    <div class="invalid-feedback">
+                                                                                    <small class="invalid-feedback">
                                                                                         Please enter an Occupation.
-                                                                                    </div>
+                                                                                    </small>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -294,9 +294,9 @@
                                                                                     </label>
                                                                                     <div class="col-lg-6">
                                                                                         <textarea name="address" class="w-full rounded border-[1.5px] border-stroke bg-transparent py-3 px-5 font-medium outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" id="validationCustom04"  rows="5" placeholder="Where does the user stay?" required></textarea>
-                                                                                        <div class="invalid-feedback">
+                                                                                        <small class="invalid-feedback">
                                                                                             Please enter an Address.
-                                                                                        </div>
+                                                                                        </small>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
