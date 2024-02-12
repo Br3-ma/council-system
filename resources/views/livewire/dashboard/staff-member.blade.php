@@ -58,9 +58,7 @@
 
                     <div x-data="{popupOpen: false}">
                         @can('add staff members')
-                        <button
-                            @click="popupOpen = true"
-                            class="flex items-center gap-2 rounded bg-primary py-2 px-4.5 font-medium text-white hover:bg-opacity-80"
+                        <button  onclick="openModal('NewStaffModal')" class="flex items-center gap-2 rounded bg-primary py-2 px-4.5 font-medium text-white hover:bg-opacity-80"
                         >
                             <svg
                             class="fill-current"
@@ -79,11 +77,9 @@
                         </button>
                         @endcan
                         <!-- ===== Task Popup Start ===== -->
-                        <div x-show="popupOpen"
-                            x-transition
-                            class="fixed top-0 left-0 z-99999 flex h-screen w-full justify-center overflow-y-scroll bg-black/80 py-5 px-4">
-                            <div @click.outside="popupOpen = false" class="relative m-auto w-full max-w-180 rounded-sm border border-stroke bg-white p-4 shadow-default dark:border-strokedark dark:bg-meta-4 sm:p-8 xl:p-10">
-                                <button @click="popupOpen = false" class="absolute right-1 top-1 sm:right-5 sm:top-5">
+                        <div id="NewStaffModal" class="fixed top-0 left-0 z-99999 h-screen w-full justify-center overflow-y-scroll bg-black/80 py-5 px-4">
+                            <div class="relative m-auto w-full max-w-180 rounded-sm border border-stroke bg-white p-4 shadow-default dark:border-strokedark dark:bg-meta-4 sm:p-8 xl:p-10">
+                                <button onclick="closeModal('NewStaffModal')" class="absolute right-1 top-1 sm:right-5 sm:top-5">
                                     <svg
                                             class="fill-current"
                                             width="20"

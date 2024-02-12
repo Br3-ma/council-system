@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />
     <style>
     #reportSearchModal, #newDistrictModal, #newStreamModal, #transactionList, 
-    #todayCollections, #revenueStreams, #NewRoleModal {
+    #todayCollections, #revenueStreams, #NewRoleModal, #NewStaffModal {
         display: none;
         position: fixed;
         top: 0;
