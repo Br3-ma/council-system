@@ -22,8 +22,8 @@ class AdminUserSeeder extends Seeder
         $adminUser = User::create([
             'fname' => 'Main',
             'lname' => 'Administrator',
-            'email' => 'admin@council.com',
-            'password' => bcrypt('123123123'),
+            'email' => 'nakposadmin@gmail.com',
+            'password' => bcrypt('Nkpa290224'),
         ]);
 
         // Assign admin role to the admin user
