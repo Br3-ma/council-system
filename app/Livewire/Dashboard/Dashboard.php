@@ -35,12 +35,6 @@ class Dashboard extends Component
     }
 
     // This function will be called every 3 seconds
-    public function poll()
-    {
-        $this->get_stats();
-        $this->collections_by_streams();
-        $this->collections_streams_pie();
-    }
 
     public function get_stats(){
         $this->total_today = $this->total_collected_today();

@@ -81,7 +81,7 @@
                       Nakonde City Council Management System
                     </p>
                     <span class="mt-15 inline-block">
-                      <img width="50" src="fav.webp"
+                      <img width="50" src="logo.webp"
                         alt="illustration" />
                     </span> 
                   </div>

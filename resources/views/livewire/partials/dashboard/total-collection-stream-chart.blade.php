@@ -25,44 +25,56 @@
                 </div>
             </div> --}}
         </div>
-        {{-- <div class="flex w-full max-w-45 justify-end">
-            <div class="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
-                <button class="rounded bg-white py-1 px-3 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-                    Day
-                </button>
-                <button class="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-                    Week
-                </button>
-                <button class="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-                    Month   
-                </button>
-                <button class="rounded py-1 px-3 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-                    Year   
-                </button>
-            </div>
-        </div> --}}
     </div>
     <div>
         <div id="barchart" class="-ml-5"></div>
     </div>
 </div>
 @push('js')
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    var options = {
-        chart: {
-            type: 'bar',
-            height: 500
-        },
-        series: [{
-            name: 'Total Amount',
-            data: @json($series)
-        }],
-        xaxis: {
-            categories: @json($categories)
-        }
-    };
+    var options1;
+    var chart1;
 
-    var chart = new ApexCharts(document.querySelector("#barchart"), options);
-    chart.render();
-</script>    
+    function fetchData2() {
+        options1 = [];
+        axios.get("{{ url('/collections_by_streams') }}", {
+                params: {
+                    // Append timestamp to the URL to prevent caching
+                    timestamp: new Date().getTime()
+                }
+            })
+            .then(response => {
+                // Clear existing chart if it exists
+                if (chart1) {
+                    chart1.destroy();
+                }
+                var options1 = {
+                    chart: {
+                        type: 'bar',
+                        height: 500,
+                        animations: {
+                            enabled: false // Disable animations
+                        }
+                    },
+                    series: [{
+                        name: 'Total Amount',
+                        data: response.data.series
+                    }],
+                    xaxis: {
+                        categories: response.data.categories
+                    }
+                };
+
+                chart1 = new ApexCharts(document.querySelector("#barchart"), options1);
+                chart1.render();
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+    fetchData2();
+    // Fetch data every 5 seconds
+    setInterval(fetchData, 6000);
+</script>
 @endpush

@@ -645,7 +645,7 @@
       };
   </script>
   {{-- Pluggins --}}
-  <script src="https://code.jquery.com/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
   <script>
     $(document).ready( function () {
