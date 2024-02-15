@@ -55,6 +55,7 @@ class TransactionController extends Controller
                                         'transaction_date' => Carbon::parse($row['D']),
                                         'total_amount' => $row['E'],
                                         'payment_method' => $row['F'],
+                                        'payment_status' => 1,
                                         'status' => 1,
                                         'machine_id' => $row['H'],
                                         'is_sync' => 1, //$row['I']

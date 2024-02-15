@@ -22,17 +22,17 @@ class Transaction extends Component
         // dd($this->transactions);
         return view('livewire.dashboard.transaction')->layout('layouts.app');
     }
-    public function import()
-    {
-        $this->validate([
-            'excelFile' => 'required|mimes:xlsx,xls',
-        ]);
+    // public function import()
+    // {
+    //     $this->validate([
+    //         'excelFile' => 'required|mimes:xlsx,xls',
+    //     ]);
 
-        // Use the import class to handle the Excel import
-        Excel::import(new YourImportClass(), $this->excelFile->getRealPath());
+    //     // Use the import class to handle the Excel import
+    //     Excel::import(new YourImportClass(), $this->excelFile->getRealPath());
 
-        session()->flash('success', 'Data imported successfully.');
+    //     session()->flash('success', 'Data imported successfully.');
 
-        return redirect()->back();
-    }
+    //     return redirect()->back();
+    // }
 }
