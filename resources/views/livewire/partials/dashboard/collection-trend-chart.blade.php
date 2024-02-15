@@ -2,7 +2,7 @@
     <div class="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div class="flex w-full flex-wrap gap-3 sm:gap-5">
             <h4 class="text-xl font-bold text-black dark:text-white">
-                28 Days Collection Trend
+                Last 28 Days | Overview Collection Trend
             </h4>
         </div>
     </div>
