@@ -20,15 +20,15 @@ class UserRoleSeeder extends Seeder
          Permission::create(['name' => 'view charts','group'=>'dashboard','permission'=>'view charts'])
          ->syncRoles('admin');
 
-         Permission::create(['name' => 'view revenue streams','group'=>'dashboard','permission'=>'view revenue streams'])
+         Permission::create(['name' => 'view revenue streams','group'=>'revenue stream','permission'=>'view revenue streams'])
          ->syncRoles('admin');
-         Permission::create(['name' => 'add revenue streams','group'=>'dashboard','permission'=>'add revenue streams'])
+         Permission::create(['name' => 'add revenue streams','group'=>'revenue stream','permission'=>'add revenue streams'])
          ->syncRoles('admin');
-         Permission::create(['name' => 'delete revenue streams','group'=>'dashboard','permission'=>'delete revenue streams'])
+         Permission::create(['name' => 'delete revenue streams','group'=>'revenue stream','permission'=>'delete revenue streams'])
          ->syncRoles('admin');
-         Permission::create(['name' => 'edit revenue streams','group'=>'dashboard','permission'=>'edit revenue streams'])
+         Permission::create(['name' => 'edit revenue streams','group'=>'revenue stream','permission'=>'edit revenue streams'])
          ->syncRoles('admin');
-         Permission::create(['name' => 'export revenue streams','group'=>'dashboard','permission'=>'export revenue streams'])
+         Permission::create(['name' => 'export revenue streams','group'=>'revenue stream','permission'=>'export revenue streams'])
          ->syncRoles('admin');
 
         //  Districts
@@ -49,6 +49,8 @@ class UserRoleSeeder extends Seeder
          Permission::create(['name' => 'view transactions','group'=>'transactions','permission'=>'view transactions'])
          ->syncRoles('admin');
          Permission::create(['name' => 'view transaction details','group'=>'transactions','permission'=>'view transaction details'])
+         ->syncRoles('admin');
+         Permission::create(['name' => 'delete transaction','group'=>'transactions','permission'=>'delete transaction'])
          ->syncRoles('admin');
          Permission::create(['name' => 'generate report','group'=>'transactions','permission'=>'generate report'])
          ->syncRoles('admin');

@@ -61,6 +61,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     
     Route::post('/create-role', [UserRoleController::class, 'store'])->name('create-role');
     Route::post('/bulk-upload', [TransactionController::class, 'bulk_upload'])->name('bulk-upload');
+    Route::get('/delete-transaction/{id}', [TransactionController::class, 'delete_transaction'])->name('delete-transaction');
+    
     Route::post('/bulk-receipt-upload', [ReceiptController::class, 'bulk_upload'])->name('bulk-receipt-upload');
     Route::get('/export-streams', [RevenueStreamController::class, 'export_streams'])->name('export-streams');
     Route::get('/export-report', [TransactionController::class, 'export_report'])->name('export-report');

@@ -482,5 +482,15 @@ class TransactionController extends Controller
     }
 
 
+    public function delete_transaction($id){
+        try {
+            Transaction::where('id', $id)->first()->delete();
         
+            session()->flash('success', 'Deleted Successfully');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+            return redirect()->back();
+        }
+    }
 }
