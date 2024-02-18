@@ -54,9 +54,9 @@ function fetchData() {
             console.error('Error fetching data:', error);
         });
 }
-    fetchData();
-    // Fetch data every 5 seconds
-    setInterval(fetchData, 5000);
+fetchData();
+// Fetch data every 15 seconds
+setInterval(fetchData, 15000);
 </script>
 @endpush
 

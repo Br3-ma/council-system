@@ -74,7 +74,7 @@
             });
     }
     fetchData2();
-    // Fetch data every 5 seconds
-    setInterval(fetchData, 6000);
+    // Fetch data every 17 seconds
+    setInterval(fetchData, 17000);
 </script>
 @endpush
