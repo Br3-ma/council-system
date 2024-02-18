@@ -380,6 +380,10 @@ class TransactionController extends Controller
     }
         
     public function export_transactions(){
+        // Disable PHP timeout and set time limit to 0 (unlimited)
+        ini_set('max_execution_time', 0);
+        set_time_limit(0);
+        ignore_user_abort(true);
         $transactions = Transaction::get();
     
         // Define custom headers
