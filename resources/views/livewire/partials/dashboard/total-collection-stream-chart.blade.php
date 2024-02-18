@@ -59,10 +59,10 @@
                     },
                     series: [{
                         name: 'Total Amount',
-                        data: response.data.series
+                        data: response.data.series.reverse()
                     }],
                     xaxis: {
-                        categories: response.data.categories
+                        categories: response.data.categories.reverse()
                     }
                 };
 
