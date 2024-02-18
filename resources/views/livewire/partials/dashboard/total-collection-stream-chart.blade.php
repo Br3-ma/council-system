@@ -75,6 +75,6 @@
     }
     fetchData2();
     // Fetch data every 17 seconds
-    setInterval(fetchData, 17000);
+    setInterval(fetchData, 30000);
 </script>
 @endpush

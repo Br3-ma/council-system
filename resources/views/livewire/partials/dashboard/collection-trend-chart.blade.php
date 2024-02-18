@@ -16,47 +16,47 @@
     var options;
     var chart;
 
-function fetchData() {
-    options = [];
-    axios.get("{{ url('/collections_by_streams') }}", {
-            params: {
-                // Append timestamp to the URL to prevent caching
-                timestamp: new Date().getTime()
-            }
-        })
-        .then(response => {
-            // Clear existing chart if it exists
-            if (chart) {
-                chart.destroy();
-            }
-
-            options = {
-                chart: {
-                    type: 'area', // Change from 'bar' to 'area'
-                    height: 500,
-                    animations: {
-                        enabled: false // Disable animations
-                    }
-                },
-                series: [{
-                    name: 'Amount',
-                    data: response.data.series
-                }],
-                xaxis: {
-                    categories: response.data.categories
+    function fetchData() {
+        options = [];
+        axios.get("{{ url('/collections_by_streams') }}", {
+                params: {
+                    // Append timestamp to the URL to prevent caching
+                    timestamp: new Date().getTime()
                 }
-            };
+            })
+            .then(response => {
+                // Clear existing chart if it exists
+                if (chart) {
+                    chart.destroy();
+                }
 
-            chart = new ApexCharts(document.querySelector("#areachart"), options);
-            chart.render();
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-}
-fetchData();
-// Fetch data every 15 seconds
-setInterval(fetchData, 15000);
+                options = {
+                    chart: {
+                        type: 'area', // Change from 'bar' to 'area'
+                        height: 500,
+                        animations: {
+                            enabled: false // Disable animations
+                        }
+                    },
+                    series: [{
+                        name: 'Amount',
+                        data: response.data.series
+                    }],
+                    xaxis: {
+                        categories: response.data.categories
+                    }
+                };
+
+                chart = new ApexCharts(document.querySelector("#areachart"), options);
+                chart.render();
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+    fetchData();
+    // Fetch data every 15 seconds
+    setInterval(fetchData, 30000);
 </script>
 @endpush
 
