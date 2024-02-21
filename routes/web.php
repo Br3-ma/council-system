@@ -9,6 +9,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Livewire\Dashboard\Calendar;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Dashboard\Districts;
+use App\Livewire\Dashboard\Penalties;
 use App\Livewire\Dashboard\Reciepts;
 use App\Livewire\Dashboard\ReportGenerator;
 use App\Livewire\Dashboard\RevenueStreams;
@@ -39,6 +40,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/calendar', Calendar::class)->name('calendar');
     Route::get('/districts', Districts::class)->name('districts');
     Route::get('/staff-members', StaffMember::class)->name('staff-members');
+    Route::get('/penalties', Penalties::class)->name('penalties');
     
     Route::get('/revenue-streams', RevenueStreams::class)->name('streams');
     Route::resource('streams', RevenueStreamController::class);

@@ -92,7 +92,6 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         try {
             // Data is an array with payload from the Mobile App
             $data = $request->toArray();
@@ -108,9 +107,12 @@ class TransactionController extends Controller
                 'total_amount'      => $data['feeAmount'],
                 'discount_amount'   => 0, //nullable
                 'tax_amount'        => 0, //nullable
+                'entity'            => $data['entity'],
+                'category'          => $data['revenueStream'],
                 'net_amount'        => $data['feeAmount'], //nullable
                 'payment_method'    => $data['paymentType'], //cash etc
                 'payment_status'    => 1,
+                'penalty_reason'    => $data['penaltyNarration'],
                 'transaction_date'  => Carbon::parse($data['timestamp'])->toDateTimeString(),
                 'created_at'        => Carbon::parse($data['timestamp']),
                 'updated_at'        => Carbon::parse($data['timestamp']),

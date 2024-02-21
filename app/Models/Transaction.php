@@ -28,6 +28,7 @@ class Transaction extends Model
         'payment_method',
         'payment_status',
         'is_sync',
+        'penalty_reason',
         'created_at',
         'updated_at',
         'created_by',
