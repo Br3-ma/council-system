@@ -96,7 +96,7 @@
           </button>
           @endcan
 
-          
+          @can('delete transaction')
           <button onclick="deleteSelectedItems()" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-danger py-2 px-3 font-medium text-white hover:bg-opacity-80">
             <span>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
@@ -105,7 +105,7 @@
             </span>
             Delete
           </button>
-          
+          @endcan
         </div>
       </div>
     </div>
