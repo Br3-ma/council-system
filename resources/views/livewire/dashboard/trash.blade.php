@@ -28,14 +28,14 @@
                 </clipPath>
               </defs>
             </svg>
-        Collection Transactions
+        Deleted Transactions
       </h2>
       <nav>
         <ol class="flex items-center gap-2">
           <li>
             <a class="font-medium" href="{{ route('dashboard') }}">Dashboard /</a>
           </li>
-          <li class="font-medium text-primary">Collections</li>
+          <li class="font-medium text-primary">Recycle Bin</li>
         </ol>
       </nav>
     </div>
