@@ -14,7 +14,7 @@ class DashbaordController extends Controller
         $categories = [];
     
         // Fetch the last 28 transactions and group by created_at date
-        $groupedTransactions = Transaction::orderBy('created_at', 'desc')
+        $groupedTransactions = Transaction::where('is_deleted', 0)->orderBy('created_at', 'desc')
             ->take(28)
             ->get()
             ->groupBy('created_at');

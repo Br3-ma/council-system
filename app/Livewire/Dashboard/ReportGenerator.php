@@ -66,7 +66,7 @@ class ReportGenerator extends Component
             break;
 
             default:
-                $this->transactions = Transact::get();
+                $this->transactions = Transact::where('is_deleted', 0)->get();
             break;
         }
         
@@ -122,7 +122,7 @@ class ReportGenerator extends Component
     
     public function summary_line_data()
     {
-        $this->transactions = Transact::get();
+        $this->transactions = Transact::where('is_deleted', 0)->get();
     }
 
 
@@ -188,7 +188,7 @@ class ReportGenerator extends Component
         $toDate = Carbon::parse($this->to_date)->endOfDay();
     
         // Fetch transactions within the date range
-        $this->transactions = Transact::whereBetween('created_at', [$fromDate, $toDate])->get();
+        $this->transactions = Transact::where('is_deleted', 0)->whereBetween('created_at', [$fromDate, $toDate])->get();
     
     }
 

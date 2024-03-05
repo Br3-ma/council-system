@@ -18,6 +18,7 @@ use App\Livewire\Dashboard\Task;
 use App\Livewire\Dashboard\Transaction;
 use App\Livewire\Dashboard\TransactionDetail;
 use App\Livewire\Dashboard\UserRoles;
+use App\Livewire\Dashboard\Trash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,6 +49,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/tasks', StaffMember::class)->name('tasks');
     Route::get('/user-roles', UserRoles::class)->name('roles');
+    Route::get('/recycle-bin', Trash::class)->name('trash');
 
     Route::get('/tasks', Task::class)->name('tasks');
     Route::get('/transactions', Transaction::class)->name('transactions');
@@ -63,7 +65,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     
     Route::post('/create-role', [UserRoleController::class, 'store'])->name('create-role');
     Route::post('/bulk-upload', [TransactionController::class, 'bulk_upload'])->name('bulk-upload');
-    Route::get('/delete-transaction/{id}', [TransactionController::class, 'delete_transaction'])->name('delete-transaction');
+    Route::post('/delete-transaction', [TransactionController::class, 'delete_transaction'])->name('delete-transaction');
+    Route::get('/delete-single-transaction/{id}', [TransactionController::class, 'delete'])->name('delete-single-transaction');
+    Route::post('/delete-transactions-permanent', [TransactionController::class, 'deletePermanent'])->name('delete-transaction-permanent');
+    Route::get('/restore/{id}', [TransactionController::class, 'restore'])->name('restore');
     
     Route::post('/bulk-receipt-upload', [ReceiptController::class, 'bulk_upload'])->name('bulk-receipt-upload');
     Route::get('/export-streams', [RevenueStreamController::class, 'export_streams'])->name('export-streams');

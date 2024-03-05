@@ -28,7 +28,7 @@ class DataController extends Controller
     {
         try {
             $data = [];
-            $transactions = Transaction::where('machine_id', $id)->get();
+            $transactions = Transaction::where('is_deleted', 0)->where('machine_id', $id)->get();
     
             foreach ($transactions as $key => $transaction) {
                 $data[] = [

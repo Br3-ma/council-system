@@ -488,11 +488,59 @@ class TransactionController extends Controller
     }
 
 
-    public function delete_transaction($id){
+    public function delete_transaction(Request $request){
         try {
-            Transaction::where('id', $id)->first()->delete();
-        
+            $ids = $request->input('ids', []);
+            if (!empty($ids)) {
+                foreach ($ids as $i) {
+                    $t = Transaction::where('id', $i)->first();
+                    // dd($t);
+                    $t->is_deleted = 1;
+                    $t->save();
+                }
+            }
             session()->flash('success', 'Deleted Successfully');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function delete($id){
+        try {
+            $t = Transaction::where('id', $id)->first();
+            $t->is_deleted = 1;
+            $t->save();
+            session()->flash('success', 'Deleted Successfully');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function deletePermanent(Request $request){
+        try {
+            $ids = $request->input('ids', []);
+            if (!empty($ids)) {
+                foreach ($ids as $i) {
+                    Transaction::where('id', $i)->first()->delete();
+                }
+            }
+            session()->flash('success', 'Deleted Successfully');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('error', $th->getMessage());
+            return redirect()->back();
+        }
+    }
+    public function restore($id){
+        try {
+            $t = Transaction::where('id', $id)->first();
+            $t->is_deleted = 0;
+            $t->save();
+            session()->flash('success', 'Restored Successfully');
             return redirect()->back();
         } catch (\Throwable $th) {
             session()->flash('error', $th->getMessage());

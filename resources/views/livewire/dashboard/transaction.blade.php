@@ -92,9 +92,20 @@
                 <path d="M10 7a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0zm4-3a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0V9a1 1 0 0 0-1-1"/>
               </svg>
             </span>
-            Generate Report
+            Report
           </button>
           @endcan
+
+          
+          <button onclick="deleteSelectedItems()" class="mt-8 flex items-center justify-content-end gap-2 rounded bg-danger py-2 px-3 font-medium text-white hover:bg-opacity-80">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
+              </svg>
+            </span>
+            Delete
+          </button>
+          
         </div>
       </div>
     </div>
@@ -106,6 +117,10 @@
             <table id="main_transations" class="w-full table-auto">
               <thead>
                 <tr class="bg-gray-2 text-left dark:bg-meta-4">
+
+                  <th>
+                    <input type="checkbox" id="selectAllCheckbox" onclick="toggleSelectAll()">
+                  </th> 
                   <th class="min-w-[110px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
                     Date
                   </th>
@@ -136,8 +151,11 @@
               <tbody>
                 @forelse ($transactions as $t)
                 <tr>
+                  <th>
+                    <input type="checkbox" id="{{ $t->id }}" name="items[]" value="{{ $t->id }}">
+                  </th>                  
                   <td class="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                    <p class="text-black dark:text-white">{{ (new DateTime($t->created_at))->format('F j, Y g:i A') }}</p>
+                    <p class="text-black text-sm dark:text-white">{{ (new DateTime($t->created_at))->format('F j, Y') }}</p>
                   </td>
                   <td class="border-b border-[#eee] py-5 px-12 dark:border-strokedark">
                     <p class="inline-flex rounded-full bg-primary bg-opacity-10 py-1 px-3 text-sm font-medium text-dark">
@@ -173,7 +191,7 @@
                   <td class="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     @can('delete transaction')
                     <div class="flex items-center space-x-3.5">
-                      <a href="#" onclick="confirmDelete('{{ route('delete-transaction', $t->id) }}')" class="hover:text-primary">
+                      <a href="#" onclick="confirmDelete('{{ route('delete-single-transaction', $t->id) }}')" class="hover:text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                             <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
@@ -207,6 +225,7 @@
                           />
                         </svg>
                       </a>
+
                     </div>
                   </td>
                 </tr>
@@ -227,5 +246,46 @@
         const fileName = this.files[0].name;
         fileLabel.innerText = fileName;
       });
+
+      function deleteSelectedItems() {
+        // Fetch all selected checkboxes
+        const checkboxes = document.querySelectorAll('input[name="items[]"]:checked');
+        const selectedIds = Array.from(checkboxes).map(checkbox => checkbox.value);
+        console.log(selectedIds);
+        if (selectedIds.length > 0) {
+          // Send an AJAX request to the Laravel route with the selected IDs
+          fetch('delete-transaction', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            body: JSON.stringify({ ids: selectedIds }),
+          })
+          .then(response => {
+            if (response.ok) {
+              console.log('Items deleted successfully.');
+              
+              window.location.reload(true);
+            } else {
+              console.error('Failed to delete items.');
+            }
+          })
+          .catch(error => console.error('Error:', error));
+        } else {
+          alert("No items selected for deletion.");
+        }
+      }
+      
+      function toggleSelectAll() {
+        console.log('hello');
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const checkboxes = document.querySelectorAll('input[name="items[]"]');
+
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = selectAllCheckbox.checked;
+        });
+      }
     </script>
+
 </main>

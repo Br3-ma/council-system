@@ -38,7 +38,7 @@ class Dashboard extends Component
 
     public function get_stats(){
         $this->total_today = $this->total_collected_today();
-        $this->num_of_transactions = Transaction::count();
+        $this->num_of_transactions =  Transaction::where('is_deleted', 0)->count();
         $this->num_of_transactions_today = $this->count_collected_today();
         
         $this->num_of_transaction_today = $this->num_transaction_today();
@@ -46,9 +46,9 @@ class Dashboard extends Component
         $this->total_net_collected = $this->net_collected();
         $this->total_gross_collected = $this->gross_collected();
         // Modals
-        $this->transactions = Transaction::orderBy('created_at', 'desc')->get();
+        $this->transactions =  Transaction::where('is_deleted', 0)->orderBy('created_at', 'desc')->get();
         $today = Carbon::today();
-        $this->transactions_today = Transaction::whereDate('created_at', '=', $today->toDateTimeString())->orderBy('created_at', 'desc')->get();
+        $this->transactions_today =  Transaction::where('is_deleted', 0)->whereDate('created_at', '=', $today->toDateTimeString())->orderBy('created_at', 'desc')->get();
         $this->streams = Stream::with('transacts')->orderBy('id', 'asc')->get();
     }
 
@@ -58,13 +58,13 @@ class Dashboard extends Component
     // Metric Traits
     public function net_collected()
     {
-        $netCollected = Transaction::sum('total_amount');
+        $netCollected =  Transaction::where('is_deleted', 0)->sum('total_amount');
         return number_format($netCollected, 2);
     }
     public function gross_collected()
     {
-        $taxes = Transaction::sum('tax_amount');
-        $collected = Transaction::sum('total_amount');
+        $taxes =  Transaction::where('is_deleted', 0)->sum('tax_amount');
+        $collected =  Transaction::where('is_deleted', 0)->sum('total_amount');
         $grossCollected = (float) $collected - (float) $taxes;
         return number_format($grossCollected, 2);
     }
@@ -72,21 +72,21 @@ class Dashboard extends Component
     public function total_collected_today()
     {
         $today = Carbon::today();
-        $totalToday = Transaction::whereDate('created_at', '=', $today->toDateString())->sum('total_amount');
+        $totalToday =  Transaction::where('is_deleted', 0)->whereDate('created_at', '=', $today->toDateString())->sum('total_amount');
         return number_format($totalToday, 2);
     }
 
     public function count_collected_today()
     {
         $today = Carbon::today();
-        return Transaction::whereDate('created_at', '=', $today->toDateString())->count();
+        return  Transaction::where('is_deleted', 0)->whereDate('created_at', '=', $today->toDateString())->count();
     }
 
     
     public function num_transaction_today()
     {
         $today = Carbon::today();
-        $totalToday = Transaction::whereDate('created_at', $today)->count();
+        $totalToday =  Transaction::where('is_deleted', 0)->whereDate('created_at', $today)->count();
         return number_format($totalToday, 2);
     }
 
@@ -102,7 +102,7 @@ class Dashboard extends Component
         $endDate = Carbon::now();
         $startDate = $endDate->copy()->subDays(28);
 
-        $groupedTransactions = Transaction::whereBetween('created_at', [$startDate, $endDate])
+        $groupedTransactions =  Transaction::where('is_deleted', 0)->whereBetween('created_at', [$startDate, $endDate])
             ->orderBy('created_at')
             ->get()
             ->groupBy(function ($transaction) {
