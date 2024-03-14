@@ -11,7 +11,7 @@
                 </svg>
             </span>
         </div>
-        <form action="{{ route('generator') }}" method="GET"  class="flex flex-col gap-y-4 rounded-sm mb-2 bg-white p-3  dark:bg-boxdark sm:flex-row sm:items-center sm:justify-between">
+        <form action="" method="GET"  class="flex flex-col gap-y-4 rounded-sm mb-2 bg-white p-3  dark:bg-boxdark sm:flex-row sm:items-center sm:justify-between">
             @csrf
             <div class="flex gap-2">
                 <div class="relative"> 

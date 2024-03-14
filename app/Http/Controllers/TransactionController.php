@@ -112,7 +112,7 @@ class TransactionController extends Controller
                 'net_amount'        => $data['feeAmount'], //nullable
                 'payment_method'    => $data['paymentType'], //cash etc
                 'payment_status'    => 1,
-                'penalty_reason'    => $data['penaltyNarration'],
+                'penalty_reason'    => 'Other reasons',
                 'transaction_date'  => Carbon::parse($data['timestamp'])->toDateTimeString(),
                 'created_at'        => Carbon::parse($data['timestamp']),
                 'updated_at'        => Carbon::parse($data['timestamp']),
